@@ -1,3 +1,8 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    color: var(--gray-800);
+}
+
 .container {
     width: 100%;
     max-width: 100%!important;
@@ -5,9 +10,15 @@
     padding: 0 .2rem
 }
 
-.btn {
+.btn,
+button,
+input,
+optgroup,
+select,
+textarea {
     overflow: hidden;
-    font-family: 'Muli';
+    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Muli'; */
 }
 
 .btn.col {
@@ -84,6 +95,13 @@
     box-shadow: none !important;
 }
 
+[type=checkbox]:not(:checked):disabled+span:not(.lever):before {
+    border: 2px solid;
+    background-color: rgba(0, 0, 0, 0.023);
+    border-color: rgba(0, 0, 0, 0.1) !important;
+    cursor: not-allowed;
+}
+
 [type=checkbox]~i,
 [type=radio]~i {
     width: 40px !important;
@@ -98,12 +116,12 @@
 [type=radio]~span,
 .label-buttons label {
     /* display: inline-flex;
-    place-content: center;
-    align-items: center;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none; */
+place-content: center;
+align-items: center;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none; */
     display: flex;
     place-content: center;
     align-items: center;
@@ -164,8 +182,8 @@
 input[type=checkbox]:checked:not(:disabled).tabbed:focus~.lever::before,
 input[type=checkbox]:checked:not(:disabled)~.lever:active::before {
     /* -webkit-transform: scale(2.4);
-    -ms-transform: scale(2.4);
-	transform: scale(2.4); */
+-ms-transform: scale(2.4);
+transform: scale(2.4); */
     -webkit-transform: scale(4);
     -ms-transform: scale(4);
     transform: scale(4);
@@ -586,6 +604,78 @@ select {
     z-index: 995;
 }
 
+.page_title {
+    display: flex;
+    align-items: center;
+    height: 64px;
+}
+
+.page_title h5 {
+    font-size: 21px;
+    margin-left: 5px;
+}
+
+.page_title .btn {
+    margin-left: 10px;
+}
+
+.nav-wrapper .input-field input[type=search] {
+    width: 100%;
+    padding-right: 0 !important;
+    padding-left: 45px !important;
+    background-color: transparent;
+    border-radius: inherit;
+}
+
+::placeholder {
+    position: relative;
+    left: 0;
+}
+
+.navbar .header-search-wrapper .input-field {
+    margin: 0;
+}
+
+::placeholder,
+.navbar .header-search-wrapper i {
+    color: var(--grey-lighten-2);
+}
+
+.navbar .header-search-wrapper i {
+    position: absolute;
+    left: 0;
+    top: 1px;
+    right: 0;
+    bottom: 0;
+    height: auto;
+    line-height: 40px !important;
+}
+
+.navbar .header-search-wrapper .btn {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .header-search-wrapper input:focus i {
+    color: #000;
+}
+
+.navbar .sideNav-lock .header-search-wrapper {
+    width: auto;
+    position: absolute;
+    height: inherit;
+    left: 0px;
+    right: 0px;
+    margin: 0px auto 0 230px;
+}
+
+.material-tooltip {
+    padding: 0px 15px;
+    font-size: 1rem;
+    line-height: 3rem;
+    margin-top: -15px;
+}
+
 nav ul a {
     color: inherit;
     background: transparent;
@@ -628,7 +718,8 @@ nav ul a {
 
 /** input-field **/
 
-.input-field label {
+.input-field label,
+nav .input-field label {
     font-family: Roboto, sans-serif;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
@@ -651,8 +742,10 @@ nav ul a {
     color: rgba(0, 0, 0, 0.3);
 }
 
-.input-field>label.active {
+.input-field>label.active,
+nav .input-field>label.active {
     transform: translateY(-50%) scale(0.8) !important;
+    color: var(--blue-accent-1)
 }
 
 .select-wrapper+label {
@@ -686,11 +779,9 @@ input[type=datetime-local]:not(.browser-default),
 input[type=tel]:not(.browser-default),
 input[type=number]:not(.browser-default),
 input[type=search]:not(.browser-default),
-textarea:not(.browser-default),
-textarea.materialize-textarea:not(.browser-default),
-.input-field:not(.browser-default) .ql-container,
-select:not(.browser-default),
-.chips {
+textarea,
+textarea.materialize-textarea,
+.nav-wrapper .input-field input[type=search] {
     font-family: 'Roboto' !important;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
@@ -703,7 +794,6 @@ select:not(.browser-default),
     box-sizing: border-box;
     height: 3rem;
     margin-bottom: 0;
-    color: var(--amber);
 }
 
 input:not([type]),
@@ -718,11 +808,10 @@ input[type=datetime-local]:not(.browser-default),
 input[type=tel]:not(.browser-default),
 input[type=number]:not(.browser-default),
 input[type=search]:not(.browser-default),
-textarea:not(.browser-default),
-textarea.materialize-textarea:not(.browser-default),
-.chips:not(.browser-default),
-.input-field:not(.browser-default) .ql-container,
-select:not(.browser-default) {
+textarea,
+textarea.materialize-textarea,
+.chips,
+.nav-wrapper .input-field input[type=search]:not(.browser-default) {
     background-color: rgba(0, 0, 0, 0);
     background-position: center calc(100% - 0px);
     background-repeat: no-repeat;
@@ -733,12 +822,7 @@ select:not(.browser-default) {
 }
 
 .chips input {
-    background-image: none !important;
-    background-color: transparent !important;
-}
-
-.chips {
-    height: auto !important;
+    background: none !important;
 }
 
 input:not([type]):focus:not([readonly]),
@@ -754,9 +838,9 @@ input[type=tel]:not(.browser-default):focus:not([readonly]),
 input[type=number]:not(.browser-default):focus:not([readonly]),
 input[type=search]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]),
-.select-wrapper:not(.browser-default) input.select-dropdown:focus,
+.select-wrapper input.select-dropdown:focus,
 .chips.focus,
-.input-field:not(.browser-default) .ql-container {
+.nav-wrapper .input-field input[type=search]:not(.browser-default):focus:not([readonly]) {
     box-shadow: none !important;
     background-image: linear-gradient(#009efb, #009efb), linear-gradient(#d9d9d9, #d9d9d9);
     background-size: 100% 2px, 100% 1px;
@@ -790,10 +874,8 @@ input[type=search]:not(.browser-default):disabled,
 input[type=search]:not(.browser-default)[readonly="readonly"],
 textarea.materialize-textarea:disabled,
 textarea.materialize-textarea[readonly="readonly"],
-.input-field:not(.browser-default) .ql-container:disabled,
-.input-field:not(.browser-default) .ql-container {
-    color: rgba(255, 255, 255, 0.5) !important;
-    cursor: not-allowed;
+.nav-wrapper .input-field input[type=search]:not(.browser-default)[readonly="readonly"] {
+    color: rgba(0, 0, 0, 0.42);
     border-bottom: none;
     background-color: rgba(0, 0, 0, 0);
     background-position: center bottom, center calc(100% - 0px);
@@ -813,9 +895,7 @@ input[type=datetime-local]:not(.browser-default):focus:not([readonly])+label,
 input[type=tel]:not(.browser-default):focus:not([readonly])+label,
 input[type=number]:not(.browser-default):focus:not([readonly])+label,
 input[type=search]:not(.browser-default):focus:not([readonly])+label,
-textarea.materialize-textarea:focus:not([readonly])+label,
-.input-field:not(.browser-default) .ql-container:not([readonly])+label,
-.input-field:not(.browser-default) label.active {
+textarea.materialize-textarea:focus:not([readonly])+label {
     color: inherit;
 }
 
@@ -845,7 +925,7 @@ input[type=search]:not(.browser-default):disabled+label,
 input[type=search]:not(.browser-default)[readonly="readonly"]+label,
 textarea.materialize-textarea:disabled+label,
 textarea.materialize-textarea[readonly="readonly"]+label,
-.input-field:not(.browser-default) .ql-container[readonly="readonly"]+label {
+.nav-wrapper .input-field input[readonly="readonly"]+label {
     color: rgba(0, 0, 0, 0.2);
 }
 
@@ -862,7 +942,7 @@ textarea.materialize-textarea[readonly="readonly"]+label,
 .input-field.with-sufix-icon input[type=number]:not(.browser-default),
 .input-field.with-sufix-icon input[type=search]:not(.browser-default),
 .input-field.with-sufix-icon textarea,
-.input-field:not(.browser-default) .ql-container {
+.nav-wrapper .input-field input[type=search]:not(.browser-default) {
     padding-right: 30px !important;
 }
 
@@ -876,24 +956,18 @@ input.no-border,
     border: none !important;
 }
 
-.input-field .prefix.active {
+.input-field .prefix.active,
+.nav-wrapper .input-field .prefix.active {
     color: inherit;
 }
 
-.input-field.error input,
-.input-field+.sufix+input {
-    padding-right: 30px;
-}
-
-.input-field .sufix {
+.input-field .sufix,
+.nav-wrapper .input-field .sufix {
     align-items: center;
     place-content: center flex-end;
     flex-direction: column;
     font-size: 16px;
     margin-right: 5px;
-    position: absolute;
-    right: 0;
-    top: -34px;
 }
 
 .input-field .error {
@@ -945,7 +1019,6 @@ input.no-border,
     background: none !important;
     box-shadow: none !important;
     margin: 0;
-    /* display: flex; */
     flex: 1;
 }
 
@@ -986,16 +1059,106 @@ input.no-border,
     padding-right: 20px;
 }
 
+.bordered {
+    border-radius: 5px !important;
+}
+
+.input-field.bordered {
+    padding: 0;
+    overflow: hidden;
+    border-radius: 24px;
+}
+
+.input-field.bordered .prefix {
+    left: 15px !important;
+}
+
+.input-field.bordered input {
+    margin: 0 !important;
+    left: 10px;
+    padding-left: 16px !important;
+    background-image: none;
+    border-radius: inherit;
+}
+
+.input-field.bordered label {
+    top: -14px;
+    background-color: var(--grey-accent-1);
+    color: var(--grey-darken-4);
+    width: auto;
+    padding: 0px 5px;
+    left: -5px;
+}
+
+.input-field.bordered input:disabled {
+    background-image: none !important;
+    padding-left: 15px !important;
+}
+
+.bordered label {
+    margin: 15px;
+    font-size: 1rem;
+}
+
+.input-field.bordered input:not([type]),
+.input-field.bordered input[type=text]:not(.browser-default),
+.input-field.bordered input[type=password]:not(.browser-default),
+.input-field.bordered input[type=email]:not(.browser-default),
+.input-field.bordered input[type=url]:not(.browser-default),
+.input-field.bordered input[type=time]:not(.browser-default),
+.input-field.bordered input[type=date]:not(.browser-default),
+.input-field.bordered input[type=datetime]:not(.browser-default),
+.input-field.bordered input[type=datetime-local]:not(.browser-default),
+.input-field.bordered input[type=tel]:not(.browser-default),
+.input-field.bordered input[type=number]:not(.browser-default),
+.input-field.bordered input[type=search]:not(.browser-default),
+.input-field.bordered textarea,
+.input-field.bordered textarea.materialize-textarea,
+.input-field.bordered .nav-wrapper .input-field input[type=search] {
+    border: 1px solid#d9d9d9 !important;
+    border-radius: 24px;
+    background-image: none !important;
+    transition: border ease-in-out 200ms;
+    background-color: #fff;
+}
+
+.input-field.bordered input:focus:not([type]),
+.input-field.bordered input[type=text]:focus:not(.browser-default),
+.input-field.bordered input[type=password]:focus:not(.browser-default),
+.input-field.bordered input[type=email]:focus:not(.browser-default),
+.input-field.bordered input[type=url]:focus:not(.browser-default),
+.input-field.bordered input[type=time]:focus:not(.browser-default),
+.input-field.bordered input[type=date]:focus:not(.browser-default),
+.input-field.bordered input[type=datetime]:focus:not(.browser-default),
+.input-field.bordered input[type=datetime-local]:focus:not(.browser-default),
+.input-field.bordered input[type=tel]:focus:not(.browser-default),
+.input-field.bordered input[type=number]:focus:not(.browser-default),
+.input-field.bordered input[type=search]:focus:not(.browser-default),
+.input-field.bordered textarea:focus,
+.input-field.bordered textarea.materialize-textarea:focus,
+.input-field.bordered .nav-wrapper .input-field input[type=search]:focus {
+    background-image: none;
+    border: 1px solid #009efb !important;
+    background-color: transparent;
+}
+
+.nav-wrapper .input-field {
+    margin-top: 8px;
+    /* float: right */
+}
+
+.nav-wrapper .input-field input[type=search] {
+    padding-left: 0;
+}
+
 input:invalid {
     background: red;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
     margin: 0;
-    /* <-- Apparently some margin are still there even though it's hidden */
 }
 
 input[type="number"] {
@@ -1098,10 +1261,10 @@ footer.page-footer {
     background-color: #fff;
     margin-top: 14px;
     position: relative;
-    /* overflow: hidden; */
+    overflow: hidden;
     border-radius: 5px;
-    /* border: 1px solid rgba(0, 0, 0, 0.12); */
-    /* height: calc(100vh - 185px); */
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    height: calc(100vh - 185px);
 }
 
 .panel.loading::before {
@@ -1120,42 +1283,25 @@ footer.page-footer {
 }
 
 .panel-header {
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+    border-bottom-color: rgba(0, 0, 0, 0.12);
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-flex: 1;
+    flex: 1 1 auto;
+    /* border-top: 1px solid rgba(0, 0, 0, 0.12); */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     overflow: hidden;
     border-radius: inherit;
-    /* height: 50px; */
-    min-height: 80px;
-    /* max-height: 50px; */
-    /* padding-right: 55px; */
-    position: fixed;
-    left: 280px;
-    right: 0px;
-    top: 80px;
-    display: flex;
-    place-content: center;
-    align-items: center;
-    /* padding-left: 60px; */
-    background: rgba(0, 0, 0, 1);
-    z-index: 999;
-    padding-top: 30px;
-    height: auto;
-}
-
-
-/* Tabs */
-
-.panel .toolbar .tabs {
-    background-color: transparent;
-    left: 0;
-    margin-bottom: 0;
-    left: -15px;
-}
-
-.panel .toolbar .tabs a {
-    color: #ffa000;
-}
-
-.panel .toolbar .tabs .active {
-    background-color: rgba(255, 255, 255, 0.12) !important;
+    height: 50px;
+    min-height: 50px;
+    max-height: 50px;
 }
 
 .panel .toolbar {
@@ -1166,12 +1312,10 @@ footer.page-footer {
     display: flex;
     flex: 1 1 100%;
     justify-content: space-between;
-    position: absolute;
-    left: 0;
 }
 
 .panel .toolbar .buttons {
-    box-sizing: content-box;
+    margin: 0 4px;
 }
 
 .panel .toolbar .btn {
@@ -1179,7 +1323,6 @@ footer.page-footer {
     background: transparent;
     padding: 0;
     min-width: 0;
-    box-sizing: content-box;
     flex-shrink: 0;
     height: 40px;
     width: 40px;
@@ -1252,7 +1395,7 @@ footer.page-footer {
 
 .panel-body {
     padding: 24px;
-    /* height: calc(100% - 30px); */
+    height: calc(100% - 30px);
 }
 
 .panel-footer {
@@ -1421,20 +1564,37 @@ table tr th:first-child {
 
 .dataTables_length,
 .dataTables_filter {
-    display: none;
+    display: none
+}
+
+.dataTables_wrapper .dataTables_filter {
+    float: left;
+    margin-left: 15px;
+    text-align: right;
+}
+
+.dataTables_wrapper .dataTables_paginate {
+    height: 50px;
+    position: absolute;
+    right: 0;
+    align-items: center;
+    display: flex;
+    padding-top: 0 !important;
 }
 
 .dataTables_wrapper .dataTables_info {
     clear: both;
     float: left;
-    padding-top: 1.27rem;
-    padding-left: 1.27rem;
+    height: 50px;
+    align-items: center;
+    display: flex;
     position: absolute;
+    padding-top: 0 !important;
 }
 
 .dataTables_wrapper .dataTables_processing {
     position: absolute;
-    top: 0;
+    top: 58px;
     left: 0;
     width: 100%;
     height: 0;
@@ -1448,6 +1608,10 @@ table tr th:first-child {
 
 .dataTables_scroll {
     border-bottom: 1px solid rgba(0, 0, 0, .12);
+}
+
+td {
+    padding: 15px !important;
 }
 
 td.enabled {
@@ -1472,7 +1636,7 @@ table.dataTable.no-footer {
     border-bottom: none;
     /* height: 500px; */
     /* min-height: 500px;
-    max-height: 500px; */
+max-height: 500px; */
 }
 
 table tbody tr:hover {
@@ -1490,7 +1654,7 @@ table.permissoes tr th {
 table.datatable th:first-child,
 table.datatable td:first-child {
     /* width: 1px !important;
-    padding-left: 22px; */
+padding-left: 22px; */
 }
 
 table.datatable th:first-child,
@@ -1510,6 +1674,72 @@ table.dataTable tr.blocked {
     background: rgba(184, 90, 90, 0.12);
 }
 
+.dataTables_wrapper .dataTables_paginate {
+    height: 50px;
+    position: absolute;
+    right: 0;
+    align-items: center;
+    display: flex;
+    padding-top: 0 !important;
+}
+
+.dataTables_wrapper .dataTables_info {
+    clear: both;
+    float: left;
+    height: 50px;
+    align-items: center;
+    display: flex;
+    position: absolute;
+    padding-top: 0 !important;
+}
+
+.dataTables_wrapper .dataTables_processing {
+    position: absolute;
+    top: 58px;
+    left: 0;
+    width: 100%;
+    height: 0;
+    margin-left: 0;
+    margin-top: 0;
+    padding-top: 0px;
+    text-align: center;
+    font-size: 1.2em;
+    background: none;
+}
+
+.pagination li a,
+.pagination li .btn,
+.dataTables_info {
+    font-size: 1.2rem;
+    line-height: 30px;
+    display: inline-block;
+    /* padding: 0 10px; */
+    color: #444;
+}
+
+.pagination li .btn {
+    text-align: center;
+    font-size: 1rem !important;
+    line-height: 1rem !important;
+    margin-left: 5px;
+    background-color: var(--grey-lighten-5);
+}
+
+.pagination li .btn i {
+    font-size: 1.5rem !important;
+    color: var(--grey-darken-1) !important;
+}
+
+.pagination li .btn.active {
+    background-color: var(--blue);
+    color: #fff;
+}
+
+.btn:disabled {
+    background-color: transparent !important;
+    opacity: 0.6;
+}
+
 
 /** PACE JS **/
 
@@ -1526,7 +1756,7 @@ table.dataTable tr.blocked {
 }
 
 .pace .pace-progress {
-    background: linear-gradient(90deg, #d500f9, #ffa000) !important;
+    background: var(--blue-accent-1) !important;
     position: fixed;
     z-index: 9999999;
     top: 0;

@@ -55,14 +55,38 @@
     --grey-lighten-3: #b0bec5!important;
     --grey-lighten-4: #cfd8dc!important;
     --grey-lighten-5: #eceff1!important;
-    --grey-accent-1: ;
-    --grey-accent-2: ;
-    --grey-accent-3: ;
-    --grey-accent-4: ;
-    --grey-darken-1: ;
-    --grey-darken-2: ;
-    --grey-darken-3: ;
-    --grey-darken-4: ;
+    --grey-accent-1: #f5f5f5!important;
+    --grey-accent-2: #eee!important;
+    --grey-accent-3: #e0e0e0!important;
+    --grey-accent-4: #bdbdbd!important;
+    --grey-darken-1: #757575!important;
+    --grey-darken-2: #616161!important;
+    --grey-darken-3: #424242!important;
+    --grey-darken-4: #212121!important;
+    --gray-50: rgb(252, 252, 253);
+    --gray-100: rgb(247, 247, 252);
+    --gray-200: rgb(238, 238, 245);
+    --gray-300: rgb(232, 229, 239);
+    --gray-400: rgb(209, 204, 224);
+    --gray-500: rgb(176, 173, 197);
+    --gray-600: rgb(142, 137, 162);
+    --gray-700: rgb(75, 71, 109);
+    --gray-800: rgb(51, 47, 81);
+    /** Blue **/
+    --blue: #2196f3!important;
+    --blue-ligenten-1: #1e88e5!important;
+    --blue-ligenten-2: #42a5f5!important;
+    --blue-ligenten-3: #64b5f6!important;
+    --blue-ligenten-4: #90caf9!important;
+    --blue-ligenten-5: #bbdefb!important;
+    --blue-accent-1: #82b1ff!important;
+    --blue-accent-2: #448aff!important;
+    --blue-accent-3: #2979ff!important;
+    --blue-accent-4: #2962ff!important;
+    --blue-darken-1: #42a5f5!important;
+    --blue-darken-2: #1976d2!important;
+    --blue-darken-3: #1565c0!important;
+    --blue-darken-4: #0d47a1!important;
 }
 
 
@@ -651,115 +675,115 @@
 }
 
 .blue {
-    background-color: #2196f3!important
+    background-color: var(--blue);
 }
 
 .blue-text {
-    color: #2196f3!important
+    color: var(--blue);
 }
 
 .blue.lighten-5 {
-    background-color: #e3f2fd!important
+    background-color: var(--blue-ligenten-5);
 }
 
 .blue-text.text-lighten-5 {
-    color: #e3f2fd!important
+    color: var(--blue-lighten-5);
 }
 
 .blue.lighten-4 {
-    background-color: #bbdefb!important
+    background-color: var(--blue-lighten-4);
 }
 
 .blue-text.text-lighten-4 {
-    color: #bbdefb!important
+    color: var(--blue-lighten-4);
 }
 
 .blue.lighten-3 {
-    background-color: #90caf9!important
+    background-color: var(--blue-ligenten-3);
 }
 
 .blue-text.text-lighten-3 {
-    color: #90caf9!important
+    color: var(--blue-ligenten-3);
 }
 
 .blue.lighten-2 {
-    background-color: #64b5f6!important
+    background-color: var(--blue-lighten-2);
 }
 
 .blue-text.text-lighten-2 {
-    color: #64b5f6!important
+    color: var(--blue-lighten-2);
 }
 
 .blue.lighten-1 {
-    background-color: #42a5f5!important
+    background-color: var(--blue-lighten-1);
 }
 
 .blue-text.text-lighten-1 {
-    color: #42a5f5!important
+    color: var(--blue-lighten-1);
 }
 
 .blue.darken-1 {
-    background-color: #1e88e5!important
+    background-color: var(--blue-darken-1);
 }
 
 .blue-text.text-darken-1 {
-    color: #1e88e5!important
+    color: var(--blue-darken-1);
 }
 
 .blue.darken-2 {
-    background-color: #1976d2!important
+    background-color: var(--blue-darken-2);
 }
 
 .blue-text.text-darken-2 {
-    color: #1976d2!important
+    color: var(--blue-darken-2);
 }
 
 .blue.darken-3 {
-    background-color: #1565c0!important
+    background-color: var(--blue-darken-3);
 }
 
 .blue-text.text-darken-3 {
-    color: #1565c0!important
+    color: var(--blue-darken-3);
 }
 
 .blue.darken-4 {
-    background-color: #0d47a1!important
+    background-color: var(--blue-darken-4);
 }
 
 .blue-text.text-darken-4 {
-    color: #0d47a1!important
+    color: var(--blue-darken-4);
 }
 
 .blue.accent-1 {
-    background-color: #82b1ff!important
+    background-color: var(--blue-accent-1);
 }
 
 .blue-text.text-accent-1 {
-    color: #82b1ff!important
+    color: var(--blue-accent-1);
 }
 
 .blue.accent-2 {
-    background-color: #448aff!important
+    background-color: var(--blue-accent-2);
 }
 
 .blue-text.text-accent-2 {
-    color: #448aff!important
+    color: var(--blue-accent-2);
 }
 
 .blue.accent-3 {
-    background-color: #2979ff!important
+    background-color: var(--blue-accent-3);
 }
 
 .blue-text.text-accent-3 {
-    color: #2979ff!important
+    color: var(--blue-accent-3);
 }
 
 .blue.accent-4 {
-    background-color: #2962ff!important
+    background-color: var(--blue-accent-4)
 }
 
 .blue-text.text-accent-4 {
-    color: #2962ff!important
+    color: var(--blue-accent-4);
 }
 
 .light-blue {
@@ -2054,75 +2078,76 @@
 }
 
 .grey.lighten-5 {
-    background-color: #fafafa!important
+    background-color: var(--grey-lighten-5);
 }
 
 .grey-text.text-lighten-5 {
-    color: #fafafa!important
+    color: var(--grey-lighten-5)
 }
 
 .grey.lighten-4 {
-    background-color: #f5f5f5!important
+    background-color: var(--grey-lighten-4);
+    ;
 }
 
 .grey-text.text-lighten-4 {
-    color: #f5f5f5!important
+    color: var(--grey-lighten-4);
 }
 
 .grey.lighten-3 {
-    background-color: #eee!important
+    background-color: var(--grey-lighten-3)
 }
 
 .grey-text.text-lighten-3 {
-    color: #eee!important
+    color: var(--grey-lighten-3)
 }
 
 .grey.lighten-2 {
-    background-color: #e0e0e0!important
+    background-color: var(--grey-lighten-2)
 }
 
 .grey-text.text-lighten-2 {
-    color: #e0e0e0!important
+    color: var(--grey-lighten-2)
 }
 
 .grey.lighten-1 {
-    background-color: #bdbdbd!important
+    background-color: var(--grey-lighten-1)
 }
 
 .grey-text.text-lighten-1 {
-    color: #bdbdbd!important
+    color: var(--grey-lighten-1)
 }
 
 .grey.darken-1 {
-    background-color: #757575!important
+    background-color: var(--grey-darken-1)
 }
 
 .grey-text.text-darken-1 {
-    color: #757575!important
+    color: var(--grey-darken-1)
 }
 
 .grey.darken-2 {
-    background-color: #616161!important
+    background-color: var(--grey-darken-2)
 }
 
 .grey-text.text-darken-2 {
-    color: #616161!important
+    color: var(--grey-darken-2)
 }
 
 .grey.darken-3 {
-    background-color: #424242!important
+    background-color: var(--grey-darken-3)
 }
 
 .grey-text.text-darken-3 {
-    color: #424242!important
+    color: var(--grey-darken-3)
 }
 
 .grey.darken-4 {
-    background-color: #212121!important
+    background-color: var(--grey-darken-4)
 }
 
 .grey-text.text-darken-4 {
-    color: #212121!important
+    color: var(--grey-darken-4)
 }
 
 .black {
