@@ -3090,3 +3090,23 @@ label>checkbox {
 .bg-opacity-8:focus {
     background-color: rgba(255, 255, 255, .8);
 }
+
+.grey-border {
+    border-color: var(--grey) !important
+}
+
+.grey-border.lighten-1 {
+    border-color: var(--grey-lighten-1) !important
+}
+
+.grey-border.lighten-2 {
+    border-color: var(--grey-lighten-2) !important
+}
+
+.grey-border.lighten-3 {
+    border-color: var(--grey-lighten-3) !important
+}
+
+.grey-border.lighten-4 {
+    border-color: var(--grey-lighten-4) !important
+}

@@ -1,3 +1,5 @@
+var checkLogs;
+
 window.onload = () => {
 
     window.addEventListener('popstate', function() {
@@ -14,6 +16,7 @@ window.onload = () => {
         $('#carregando').remove();
     }, 550);
 
+    checkLogs = setInterval(checkLog, 1000);
 }
 
 function core() {
@@ -182,5 +185,15 @@ function core() {
         if (URL.split('/').pop() !== 'login')
             document.getElementById('url').value = URL;
     }
+
+    $('button#shell_exec').on('click', function() {
+
+        Http.post(BASE_URL + 'api/shell', {}, (response) => {
+            console.log(response);
+        });
+
+        checkLogs = setInterval(checkLog, 1000);
+
+    });
 
 }

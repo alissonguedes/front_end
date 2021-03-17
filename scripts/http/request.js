@@ -54,11 +54,11 @@ var Request = {
 
     menu: () => {
 
-        var controller = typeof window.location.href.split(BASE_URL)[1].split('/').splice(1)[0] !== 'undefined' ? window.location.href.split(BASE_URL)[1].split('/').splice(1)[0] : null;
+        var controller = typeof window.location.href.split(BASE_URL).splice(1)[0].split('/')[0] !== 'undefined' ? window.location.href.split(BASE_URL).splice(1)[0].split('/')[0] : null;
 
-        var action = typeof window.location.href.split(BASE_URL)[1].split('/').splice(1)[1] !== 'undefined' ? window.location.href.split(BASE_URL)[1].split('/').splice(1)[1] : null;
+        var action = typeof window.location.href.split(BASE_URL).splice(1)[0].split('/')[1] !== 'undefined' ? window.location.href.split(BASE_URL).splice(1)[0].split('/')[1] : null;
 
-        var url = BASE_URL + (controller !== null ? '/' + controller : '') + (action !== null ? '/' + action : '');
+        var url = BASE_URL + (controller !== null ? controller : '') + (action !== null ? '/' + action : '');
 
         $('#slide-out').removeClass('active').find('.active').removeClass('active');
 

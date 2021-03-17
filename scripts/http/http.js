@@ -58,7 +58,7 @@ var Http = {
         if (params && typeof params !== 'function') {
 
             $.ajax({
-                'async': false,
+                'async': true,
                 'headers': {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
@@ -98,7 +98,7 @@ var Http = {
 
         // movimenta a barra de rolagem para o topo da pÃ¡gina
         $('html,body').animate({
-            scrollTop: 0
+            scrollBottom: 0
         }, {
             duration: 200
         });
@@ -121,10 +121,10 @@ var Http = {
 
         xhr.onloadend = function(e) {
 
-            console.log(xhr);
+            // console.log(xhr);
 
             if (xhr.readyState === 4) {
-                Http.renderer(url);
+                Http.renderer(xhr.response, xhr.status);
             } else {
 
             }
@@ -146,21 +146,26 @@ var Http = {
 
     },
 
-    renderer: (url) => {
+    renderer: (content, status) => {
 
         var parser = new DOMParser();
-        var content = parser.parseFromString(xhr.response, 'text/html');
+        var responseHtml = parser.parseFromString(content, 'text/html');
 
-        if (xhr.status === 200) {
+        if (status !== 403) {
 
-            var title = content.querySelector('title');
+            var title = responseHtml.querySelector('title');
 
-            if (title) {
+            if (title)
                 document.title = title.innerHTML;
+
+            if ($(responseHtml).find('#body').length) {
+                console.log(responseHtml)
+                $('#body').html($(responseHtml).find('#body').html());
+            } else {
+                $('#main').html($(responseHtml).find('html').html());
             }
 
-            $('body').html($(content).find('#body').html());
-
+            // console.log(responseHtml);
         } else {
 
             Storage.removeSession('token');

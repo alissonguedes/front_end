@@ -710,3 +710,31 @@ var Events = {
     }
 
 };
+
+
+function checkLog() {
+
+    Http.post(BASE_URL + 'api/log', { dataType: 'json' }, function(response) {
+
+        if (response.log != null) {
+            $('#log').css('display', 'block').animate({
+                scrollTop: $('#console').height() * 100
+            }, {
+                duration: 200
+            }, ('onMouseHover',
+                function() {
+                    alert('teste')
+                })).find('#console').append('' + response.log.replace(/\n/g, '') + '');
+
+            $('#shell_exec').attr('disabled', true);
+
+        } else {
+
+            clearInterval(checkLogs);
+            $('#shell_exec').attr('disabled', false);
+
+        }
+
+    });
+
+}
