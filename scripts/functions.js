@@ -721,10 +721,7 @@ function checkLog() {
                 scrollTop: $('#console').height() * 100
             }, {
                 duration: 200
-            }, ('onMouseHover',
-                function() {
-                    alert('teste')
-                })).find('#console').append('' + response.log.replace(/\n/g, '') + '');
+            }).find('#console').append('' + response.log.replace(/\n/g, '') + '');
 
             $('#shell_exec').attr('disabled', true);
 
