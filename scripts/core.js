@@ -16,7 +16,7 @@ window.onload = () => {
         $('#carregando').remove();
     }, 550);
 
-    checkLogs = setInterval(checkLog, 1000);
+    checkLogs = setInterval(checkLog, 200);
 }
 
 function core() {
@@ -191,6 +191,31 @@ function core() {
         Http.post(BASE_URL + 'api/shell', {}, (response) => {
             console.log(response);
         });
+
+        var preloader_wrapper = $('<div>', { 'class': 'preloader-wrapper small active' })
+            .append(
+                $('<div>', { 'class': 'spinner-layer spinner-blue-only' })
+                .append(
+                    $('<div>', { 'class': 'circle-clipper left' })
+                    .append(
+                        $('<div>', { 'class': 'circle' })
+                    )
+                )
+                .append(
+                    $('<div>', { 'class': 'gap-patch' })
+                    .append(
+                        $('<div>', { 'class': 'circle' })
+                    )
+                )
+                .append(
+                    $('<div>', { 'class': 'circle-clipper right' })
+                    .append(
+                        $('<div>', { 'class': 'circle' })
+                    )
+                )
+            )
+
+        $('#shell_exec').attr('disabled', true).find('i').removeClass('material-icons').html(preloader_wrapper);
 
         checkLogs = setInterval(checkLog, 1000);
 

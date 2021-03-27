@@ -717,18 +717,56 @@ function checkLog() {
     Http.post(BASE_URL + 'api/log', { dataType: 'json' }, function(response) {
 
         if (response.log != null) {
+
+            Storage.set('syncfiles', true);
+
             $('#log').css('display', 'block').animate({
                 scrollTop: $('#console').height() * 100
             }, {
                 duration: 200
-            }).find('#console').append('' + response.log.replace(/\n/g, '') + '');
+            }).find('#console').append('' + response.log.replace(/\n/g, '<br>') + '');
 
-            $('#shell_exec').attr('disabled', true);
+            if ($('#shell_exec').find('i').hasClass('material-icons')) {
+
+                var preloader_wrapper = $('<div>', { 'class': 'preloader-wrapper small active' })
+                    .append(
+                        $('<div>', { 'class': 'spinner-layer spinner-blue-only' })
+                        .append(
+                            $('<div>', { 'class': 'circle-clipper left' })
+                            .append(
+                                $('<div>', { 'class': 'circle' })
+                            )
+                        )
+                        .append(
+                            $('<div>', { 'class': 'gap-patch' })
+                            .append(
+                                $('<div>', { 'class': 'circle' })
+                            )
+                        )
+                        .append(
+                            $('<div>', { 'class': 'circle-clipper right' })
+                            .append(
+                                $('<div>', { 'class': 'circle' })
+                            )
+                        )
+                    )
+
+                $('#shell_exec').attr('disabled', true).find('i').removeClass('material-icons').html(preloader_wrapper);
+
+            }
 
         } else {
 
             clearInterval(checkLogs);
+
             $('#shell_exec').attr('disabled', false);
+            $('#shell_exec').find('i').addClass('material-icons').text('code');
+            $('#log').hide();
+
+            if (Storage.has('syncfiles')) {
+                Form.showMessage('Sincronização de arquivos foi finalizada com sucesso!');
+                Storage.del('syncfiles');
+            }
 
         }
 

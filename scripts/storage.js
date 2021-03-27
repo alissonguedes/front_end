@@ -16,6 +16,18 @@ var Storage = {
         return db.removeItem(key);
     },
 
+    has: (key) => {
+
+        if (typeof key === 'undefined')
+            return db = Boolean;
+
+        if (Storage.get(key) === null)
+            return false;
+
+        return true;
+
+    },
+
     isset: (key) => {
 
         if (typeof key === 'undefined')

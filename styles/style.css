@@ -1250,6 +1250,7 @@ button .preloader-wrapper.small {
     width: 21px;
     height: 21px;
     top: 0px;
+    display: flex;
 }
 
 .circle-clipper {
