@@ -16,7 +16,7 @@ window.onload = () => {
         $('#carregando').remove();
     }, 550);
 
-    checkLogs = setInterval(checkLog, 200);
+    // checkLogs = setInterval(checkLog, 200);
 }
 
 function core() {
