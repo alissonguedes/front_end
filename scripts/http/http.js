@@ -24,7 +24,7 @@ var Http = {
             var array = [];
 
             $.ajax({
-                'async': false,
+                'async': true,
                 'method': (params.method || 'get'),
                 'url': url,
                 'headers': {

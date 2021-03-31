@@ -16,7 +16,7 @@ window.onload = () => {
         $('#carregando').remove();
     }, 550);
 
-    // checkLogs = setInterval(checkLog, 200);
+    checkLogs = setInterval(checkLog, 200);
 }
 
 function core() {
@@ -186,38 +186,30 @@ function core() {
             document.getElementById('url').value = URL;
     }
 
-    $('button#shell_exec').on('click', function() {
+    /**
+     * Ação para verificação do Log de importação na página [/imports]
+     */
+    $('form#import-files').on('submit', function() {
 
-        Http.post(BASE_URL + 'api/shell', {}, (response) => {
-            console.log(response);
-        });
+        var self = $(this);
 
-        var preloader_wrapper = $('<div>', { 'class': 'preloader-wrapper small active' })
-            .append(
-                $('<div>', { 'class': 'spinner-layer spinner-blue-only' })
-                .append(
-                    $('<div>', { 'class': 'circle-clipper left' })
-                    .append(
-                        $('<div>', { 'class': 'circle' })
-                    )
-                )
-                .append(
-                    $('<div>', { 'class': 'gap-patch' })
-                    .append(
-                        $('<div>', { 'class': 'circle' })
-                    )
-                )
-                .append(
-                    $('<div>', { 'class': 'circle-clipper right' })
-                    .append(
-                        $('<div>', { 'class': 'circle' })
-                    )
-                )
-            )
+        if (self.is(':valid')) {
 
-        $('#shell_exec').attr('disabled', true).find('i').removeClass('material-icons').html(preloader_wrapper);
+            setTimeout(function() {
+                self.find('*').attr('disabled', true);
+            }, 200);
 
-        checkLogs = setInterval(checkLog, 1000);
+            Http.post(BASE_URL + 'api/log', {
+                data: {
+                    'arquivo': $('select[name="arquivo"]').val()
+                }
+            }, (response) => {
+                console.log(response);
+            });
+
+            checkLogs = setInterval(checkLog, 200);
+
+        }
 
     });
 

@@ -720,7 +720,7 @@ function checkLog() {
 
             Storage.set('syncfiles', true);
 
-            $('#log').css('display', 'block').animate({
+            $('#log').css('display', 'block').find('#console').parent().animate({
                 scrollTop: $('#console').height() * 100
             }, {
                 duration: 200
@@ -759,12 +759,11 @@ function checkLog() {
 
             clearInterval(checkLogs);
 
-            $('#shell_exec').attr('disabled', false);
-            $('#shell_exec').find('i').addClass('material-icons').text('code');
+            $('form#import-files *').attr('disabled', false);
+            $('form#import-files').find('button[type="submit"]').find('i').addClass('material-icons').text('send');
             $('#log').hide();
 
             if (Storage.has('syncfiles')) {
-                Form.showMessage('Sincronização de arquivos foi finalizada com sucesso!');
                 Storage.del('syncfiles');
             }
 

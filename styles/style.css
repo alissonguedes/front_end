@@ -45,6 +45,13 @@ textarea {
     width: 100%;
 }
 
+.btn {
+    display: flex;
+    /* flex: 1 0 100%; */
+    flex: 1;
+    align-items: center;
+}
+
 .btn,
 .btn-flat,
 .btn-large,
@@ -631,7 +638,10 @@ nav .nav-wrapper .btn {
     flex: 1 1 45px;
 }
 
-::placeholder,
+::placeholder {
+    color: #9e9e9e !important;
+}
+
 .prefix,
 .sufix {
     color: inherit !important;
