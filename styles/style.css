@@ -3,11 +3,6 @@ body {
     color: var(--gray-800);
 }
 
-html,
-body {
-    overflow: hidden !important
-}
-
 hr {
     border-top: none;
     border-right: none;
@@ -725,9 +720,27 @@ nav .nav-wrapper .btn {
 }
 
 .navbar-list>li,
-.navbar-list>li>a {
+.navbar-list>li>a,
+.navbar-list>li>button {
     height: 64px;
     line-height: 64px !important;
+}
+
+nav ul>li>button {
+    font-size: 1rem;
+    display: block;
+    padding: 0 15px !important;
+    -webkit-transition: background-color .3s;
+    transition: background-color .3s;
+    border-radius: 0 !important;
+}
+
+nav ul button:hover {
+    background-color: rgba(0, 0, 0, .1);
+}
+
+nav ul button i {
+    font-size: 24px !important;
 }
 
 .material-tooltip {

@@ -153,7 +153,7 @@ function Materializecss() {
                     coverTrigger: !0,
                     alignment: "left"
                 }),
-                $(".notification-button, .nfe-button, .profile-button, .translation-button, .dropdown-settings").dropdown({
+                $(".notification-button, .profile-button, .btn-dropdown, .translation-button, .dropdown-settings").dropdown({
                     inDuration: 300,
                     outDuration: 225,
                     constrainWidth: !1,

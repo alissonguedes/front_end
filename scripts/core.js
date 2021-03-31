@@ -213,4 +213,26 @@ function core() {
 
     });
 
+    /**
+     * Ação do botão de exportar NFe
+     */
+    // $('#download-sped-nfe .dropdown-item a').on('click', function(e) {
+
+    //     e.preventDefault();
+
+    //     var e = $(this);
+    //     var a = e.data('file');
+    //     var url = $(this).data('link');
+    //     var params = $(this).data('params');
+
+    //     Http.post(url, {
+    //         data: params
+    //     }, (response) => {
+
+    //         console.log(response);
+
+    //     });
+
+    // });
+
 }
