@@ -711,8 +711,9 @@ var Events = {
 
 };
 
-
 function checkLog() {
+
+    $(this).removeClass('pause').addClass('play').find('i').html('play_arrow');
 
     Http.post(BASE_URL + 'api/log', { dataType: 'json' }, function(response) {
 
@@ -764,6 +765,7 @@ function checkLog() {
             $('#log').hide();
 
             if (Storage.has('syncfiles')) {
+                Form.showMessage(response.message);
                 Storage.del('syncfiles');
             }
 

@@ -16,7 +16,8 @@ window.onload = () => {
         $('#carregando').remove();
     }, 550);
 
-    checkLogs = setInterval(checkLog, 200);
+    // checkLogs = setInterval(checkLog, 200);
+
 }
 
 function core() {
@@ -111,8 +112,6 @@ function core() {
 
                         var confirm = $(this).data('confirm');
 
-                        console.log(confirm)
-
                         if (confirm) {
 
                             $(this).parents('.panel').find('#form_mail_actions').css('display', 'none')
@@ -169,12 +168,6 @@ function core() {
         'numVisible': 10
     });
 
-    // var elems = document.querySelectorAll('.carousel');
-    // var instances = M.Carousel.init(elems, options);
-
-    // var instances = M.Carousel.init(elems);
-    // var instance = M.Carousel.getInstance(instances);
-
     setInterval(function() {
         $('.carousel').carousel('next');
     }, 3000)
@@ -204,7 +197,7 @@ function core() {
                     'arquivo': $('select[name="arquivo"]').val()
                 }
             }, (response) => {
-                console.log(response);
+                // console.log(response);
             });
 
             checkLogs = setInterval(checkLog, 200);
@@ -213,26 +206,19 @@ function core() {
 
     });
 
-    /**
-     * Ação do botão de exportar NFe
-     */
-    // $('#download-sped-nfe .dropdown-item a').on('click', function(e) {
+    clearInterval(checkLogs);
+    checkLogs = setInterval(checkLog, 200);
 
-    //     e.preventDefault();
+    $('#log').find('button#log-rotate').on('click', function() {
 
-    //     var e = $(this);
-    //     var a = e.data('file');
-    //     var url = $(this).data('link');
-    //     var params = $(this).data('params');
+        if ($(this).hasClass('play')) {
+            checkLogs = setInterval(checkLog, 200);
+            $(this).removeClass('play').addClass('pause').find('i').html('pause');
+        } else if ($(this).hasClass('pause')) {
+            clearInterval(checkLogs);
+            $(this).removeClass('pause').addClass('play').find('i').html('play_arrow');
+        }
 
-    //     Http.post(url, {
-    //         data: params
-    //     }, (response) => {
-
-    //         console.log(response);
-
-    //     });
-
-    // });
+    })
 
 }

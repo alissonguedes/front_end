@@ -55,8 +55,6 @@ var Http = {
 
     post: (url, params, callback) => {
 
-        console.log(params);
-
         if (params && typeof params !== 'function') {
 
             $.ajax({
@@ -167,7 +165,6 @@ var Http = {
                 $('#main').html($(responseHtml).find('html').html());
             }
 
-            // console.log(responseHtml);
         } else {
 
             Storage.removeSession('token');
