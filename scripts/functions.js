@@ -302,7 +302,7 @@ var App = {
 
 		is_decimal.each(function() {
 
-			var exp = /^0/;
+			var exp = /^0\,[0-9]{2}$/;
 			var $val = typeof $(this).attr('data-value') !== 'undefined' && $(this).attr('data-value') != null ? $(this).attr('data-value') : '0,00';
 			var $class = typeof $(this).attr('data-align') !== 'undefined' && $(this).attr('data-align') != '' ? $(this).attr('data-align') : 'right';
 
@@ -316,37 +316,54 @@ var App = {
 
 			$(this).on('keydown', function(e) {
 
+				MascaraUtils.mascara(this, MascaraUtils.DECIMAL);
+				
 				if ($(this).val() == '' || $(this).val() == '0,00' || $(this).val() == '0') {
+
 					if (e.keyCode == 8) {
 						$(this).val('0,00');
 						e.preventDefault();
 						return false;
 					}
+
+				}
+				
+				if ($(this).val().length <= 2) {
+							$(this).val('0' + ($(this).val()));
+				}
+				
+				if (is_numeric(e.key)) {
+
+					var valor = parseFloat($(this).val().replace(',', '.'));
+
+					if (exp.test($(this).val())) {
+
+						if (valor < 1) {
+							$(this).val(($(this).val()).slice(-2));
+						}
+
+					}
+
 				}
 
-				if (is_numeric(e.key))
-					if (exp.test(this.value))
-						this.value = ('0' + this.value).slice(-2);
 
-				MascaraUtils.mascara(this, MascaraUtils.DECIMAL);
+			}) // .on('keyup', function(e) {
 
-			}).on('keyup', function(e) {
-
-				if ($(this).val() == '' || $(this).val() == '0,00' || $(this).val() == '0')
-					if (e.keyCode == 8) {
-						$(this).val('0,00');
-						e.preventDefault();
-						return false;
-					}
-
-			}).attr('maxlength', (typeof $(this).attr('maxlength') !== 'undefined' ? $(this).attr('maxlength') : 9)).attr('placeholder', '0,00').addClass('text-' + $class).focus(function() {
+			 //	if ($(this).val() == '' || $(this).val() == '0,00' || $(this).val() == '0')
+			 //		if (e.keyCode == 8) {
+			 //			$(this).val('0,00');
+			 //			e.preventDefault();
+			 //			return false;
+			 //		}
+ //
+			 //}).attr('maxlength', (typeof $(this).attr('maxlength') !== 'undefined' ? $(this).attr('maxlength') : 9)).attr('placeholder', '0,00').addClass('text-' + $class).focus(function() {
 				// if ($(this).val().length == 0 || $(this).val() == 0)
 				// $(this).val('0,00');
-			}).on('blur', function() {
-				if ($(this).val().length == 0 || $(this).val() == 0)
-					$(this).val('0,00');
-
-			});
+ //			}).on('blur', function() {
+ //				if ($(this).val().length == 0 || $(this).val() == 0)
+ //					$(this).val('0,00');
+ //
+ //			});
 
 		});
 
@@ -595,17 +612,16 @@ var MascaraUtils = {
 		var v2 = revertText.join('');
 		var v2 = v2.replace(/\D/g, '')
 
-		v2 = v2.replace(/(\d{2})(\d)/, '$1,$2');
-
-		if (v2.length < 3) {
-			v2 = v2.replace(/(\d{3})(\d)/, '$1$2,0');
-			v2 = v2.replace(/(\d{3})(\d)/, '$10,0');
+		if (v2.length <= 2) {
+			v2 = v2.replace(/(\d)(\d)/, '$1$2,0');
 		} else {
+			v2 = v2.replace(/(\d{2})(\d)/, '$1,$2');
+		}
 
-			if (v2.length > 6) {
-				for (var i = 0; i < v2.length; i++) {
-					v2 = v2.replace(/(\d{3})(\d)/, '$1.$2');
-				}
+		if (v2.length > 6) {
+
+			for (var i = 0; i < v2.length; i++) {
+				v2 = v2.replace(/(\d{3})(\d)/, '$1.$2');
 			}
 
 		}
