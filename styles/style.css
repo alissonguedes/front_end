@@ -79,7 +79,13 @@ textarea {
 }
 
 .dropdown-content {
-    width: inherit !important;
+    width: 100% !important;
+}
+
+.brand-sidebar,
+.sidenav {
+    width: inherit;
+    box-shadow: 0 -5px -10px 0px rgb(0 0 0 / 20%);
 }
 
 .sidenav-main {
@@ -639,12 +645,13 @@ nav .nav-wrapper i {
 }
 
 nav .nav-wrapper .btn {
-    margin-top: 11px;
     margin-right: 10px;
-    padding: 0 10px;
+    padding: 0 15px;
     place-content: center;
     display: flex;
-    flex: 1 1 45px;
+    left: 300px;
+    position: absolute;
+    /* flex: 1 1 45px; */
 }
 
 ::placeholder {
@@ -656,14 +663,33 @@ nav .nav-wrapper .btn {
     color: inherit !important;
 }
 
+.navbar .header-search-wrapper {
+    width: auto;
+    height: inherit;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding-right: 30px !important;
+    background-color: transparent !important;
+    left: 300px;
+    z-index: 9999;
+}
+
 .navbar .header-search-wrapper label {
     position: absolute;
-    top: -2px;
     cursor: text !important;
 }
 
 .navbar .header-search-wrapper input {
-    padding-left: 50px !important;
+    height: inherit;
+    border-radius: 0 !important;
+    border-color: inherit !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    margin: 0;
+    padding-left: 40px !important;
+    color: inherit;
 }
 
 .navbar .header-search-wrapper-focus input,
@@ -671,14 +697,12 @@ nav .nav-wrapper .btn {
     color: var(--grey-lighten-3) !important;
 }
 
-.navbar .header-search-wrapper-focus label {
-    color: var(--grey-darken-4) !important;
+.navbar .header-search-wrapper-focus {
+    background-color: var(--grey-lighten-3) !important;
 }
 
-.navbar .header-search-wrapper {
-    height: inherit;
-    margin: 0 30px 0 !important;
-    padding-top: 8px;
+.navbar .header-search-wrapper-focus label {
+    color: var(--grey-darken-4) !important;
 }
 
 .navbar .header-search-wrapper i {
@@ -686,6 +710,7 @@ nav .nav-wrapper .btn {
     line-height: inherit !important;
     position: absolute;
     top: 0;
+    left: 3px;
 }
 
 .nav-wrapper .header {
@@ -693,7 +718,7 @@ nav .nav-wrapper .btn {
     height: inherit;
     display: flex;
     place-content: space-between;
-    padding-left: 300px;
+    align-items: center;
 }
 
 .nav-wrapper .header .center {
@@ -701,26 +726,30 @@ nav .nav-wrapper .btn {
 }
 
 .nav-wrapper .header .page-title {
-    width: 50%;
     height: 64px;
     display: flex;
+    position: absolute;
+    /* left: 340px; */
+    left: 330px;
+    align-items: center;
 }
 
 .nav-wrapper .header .page-title .title {
     width: 100%;
     margin: 0;
     line-height: inherit;
-    overflow: hidden;
-    position: relative;
-    text-overflow: ellipsis;
+    /* position: relative; */
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
     white-space: nowrap;
     padding-right: 80px;
     text-transform: uppercase;
     font-size: 1.23rem;
+    margin-left: 10px;
 }
 
 .nav-wrapper .header .page-title * {
-    color: inherit !important;
+    /* color: inherit !important; */
 }
 
 .navbar-list {
@@ -871,6 +900,7 @@ textarea:not(.browser-default),
 textarea.materialize-textarea:not(.browser-default),
 .input-field:not(.browser-default) .ql-container,
 select:not(.browser-default),
+.select-wrapper:not(.browser-default) input.select-dropdown,
 .chips {
     font-family: 'Roboto' !important;
     -moz-osx-font-smoothing: grayscale;
@@ -884,7 +914,6 @@ select:not(.browser-default),
     box-sizing: border-box;
     height: 3rem;
     margin-bottom: 0;
-    color: var(--amber);
 }
 
 input:not([type]),
@@ -903,6 +932,7 @@ textarea:not(.browser-default),
 textarea.materialize-textarea:not(.browser-default),
 .chips:not(.browser-default),
 .input-field:not(.browser-default) .ql-container,
+.select-wrapper:not(.browser-default) input.select-dropdown,
 select:not(.browser-default) {
     background-color: rgba(0, 0, 0, 0);
     background-position: center calc(100% - 0px);
@@ -935,11 +965,12 @@ input[type=tel]:not(.browser-default):focus:not([readonly]),
 input[type=number]:not(.browser-default):focus:not([readonly]),
 input[type=search]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]),
+.select-wrapper:not(.browser-default) input.select-dropdown:focus,
 .select-wrapper:not(.browser-default) input.select-dropdown:focus.ql-container:not([readonly]),
 .chips.focus:not([readonly]),
 .input-field:not(.browser-default) .ql-container:not([readonly]) {
     box-shadow: none !important;
-    background-image: linear-gradient(#009efb, #009efb), linear-gradient(#d9d9d9, #d9d9d9);
+    background-image: linear-gradient(var(--blue), var(--blue)), linear-gradient(#d9d9d9, #d9d9d9);
     background-size: 100% 2px, 100% 1px;
     outline: 0 none;
     transition: background ease-in-out 200ms;
@@ -2377,9 +2408,7 @@ table.dataTable tr.blocked {
     }
     #main {
         padding-left: 300px;
-        overflow: auto;
         height: calc(100% - 64px);
-        position: fixed;
         width: 100%;
     }
     #main.main-full {

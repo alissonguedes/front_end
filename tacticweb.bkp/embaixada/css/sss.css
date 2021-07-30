@@ -1,0 +1,51 @@
+.sss {
+	height: 0;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	display: block;
+	overflow: hidden;
+}
+
+.ssslide {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+	overflow: hidden;
+}
+
+.ssslide img {
+	max-width: 100%;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	display: block;
+}
+
+
+.sssprev {
+	position: absolute;
+	left: 0%;
+	margin-top: 80px;
+	width: 50px;
+	height: 45px;
+	background: url('../img/prev.png') no-repeat;
+}
+
+.sssnext {
+	position: absolute;
+	right: 0%;
+	margin-top: 80px;
+	width: 50px;
+	height: 45px;
+	background: url('../img/next.png') no-repeat;
+}
+
+.sssprev:hover, .sssnext:hover {
+	cursor: pointer;
+}

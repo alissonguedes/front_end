@@ -1,5 +1,6 @@
 :root {
     --black: #000 !important;
+    --white: #fff !important;
     /** Red **/
     --red: #f44336 !important;
     --red-lighten-1: #ef5350 !important;

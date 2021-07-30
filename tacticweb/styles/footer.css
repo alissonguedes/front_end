@@ -1,0 +1,15 @@
+.tw {
+    width: 101px;
+    height: 28px;
+    float: right;
+    background: url(../img/tw.png) no-repeat left top;
+    transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+}
+
+.tw:hover {
+    background: url(../img/tw.png) no-repeat right top;
+}

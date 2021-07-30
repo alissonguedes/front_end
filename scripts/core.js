@@ -242,8 +242,8 @@ function core() {
 
     });
 
-    clearInterval(checkLogs);
-    checkLogs = setInterval(checkLog, 200);
+    // clearInterval(checkLogs);
+    // checkLogs = setInterval(checkLog, 200);
 
     $('#log').find('button#log-rotate').on('click', function() {
 

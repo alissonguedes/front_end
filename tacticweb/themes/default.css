@@ -1,0 +1,185 @@
+@font-face {
+    font-family: 'avante';
+    src: url('../fontes/avante.ttf') format('truetype');
+}
+
+:root {
+    --amber: #ffc802 !important;
+}
+
+body {
+    background-color: #000;
+    background-image: url('../img/bg.jpg');
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    font-family: 'abel';
+}
+
+
+/** Header */
+
+.navbar .navbar-main {
+    background: transparent;
+    border-bottom: 1px solid var(--amber);
+}
+
+.nav-wrapper .header .page-title {
+    width: auto;
+}
+
+.nav-wrapper .header .page-title .title {
+    color: var(--white);
+    text-transform: inherit;
+    padding-right: 0;
+    font-size: 32px;
+    font-family: 'avante';
+}
+
+
+/** Search */
+
+.navbar .header-search-wrapper {
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    transition: none;
+}
+
+.navbar input.header-search-input:active,
+.navbar input.header-search-input:focus {
+    background: transparent !important;
+}
+
+.navbar .header-search-wrapper input {
+    height: inherit;
+    border-radius: 0 !important;
+    border-color: inherit !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    margin: 0;
+    padding-left: 100px;
+    color: #fff;
+    font-size: 32px;
+    font-family: 'avante' !important;
+}
+
+.navbar .header-search-wrapper label i {
+    cursor: pointer;
+}
+
+.navbar .header-search-wrapper-focus {
+    background-color: #000 !important;
+}
+
+.navbar .header-search-wrapper-focus input:focus,
+.navbar .header-search-wrapper-focus label i {
+    background: transparent !important;
+    color: #fff !important;
+    cursor: text;
+}
+
+
+/** Logo **/
+
+.brand-sidebar {
+    height: 120px !important;
+}
+
+.brand-sidebar h1 {
+    text-align: center;
+    padding: 20px;
+}
+
+.brand-sidebar img {
+    width: 180px;
+}
+
+.brand-sidebar,
+.sidenav {
+    box-shadow: none !important;
+}
+
+
+/** Menu **/
+
+.sidenav-main {
+    z-index: 9999;
+}
+
+.sidenav-main ul {
+    top: 80px;
+    padding-left: 30px;
+    padding-right: 20px;
+}
+
+.sidenav-main ul>li {
+    margin-bottom: 2px;
+    border-radius: 0 !important;
+    border-left-color: var(--black) !important;
+    border-left-width: 10px;
+    border-left-style: solid;
+}
+
+.sidenav li a {
+    font-size: 18px;
+    font-weight: bold;
+    height: 54px;
+    line-height: 54px;
+    background: var(--amber);
+    transition: all .5s ease !important;
+    -moz-transition: all .5s ease !important;
+    -webkit-transition: all .5s ease !important;
+}
+
+.sidenav li.active a {
+    box-shadow: 0px 3px 20px 0 rgba(0, 0, 0, 0.5);
+}
+
+.sidenav li.active a,
+.sidenav li>a:not(.active):hover {
+    color: var(--amber) !important;
+    padding-left: 30px !important;
+    background: var(--black) !important;
+    border-radius: 0 !important;
+    /* border-left-color: var(--amber) !important; */
+}
+
+.sidenav li>a>i.material-icons {
+    line-height: inherit !important;
+    height: inherit;
+}
+
+
+/** Panel */
+
+.panel {
+    background-color: transparent;
+    padding: 30px;
+}
+
+.panel-header {
+    background-color: transparent;
+    border-bottom: 1px solid var(--amber);
+}
+
+.panel-body {
+    top: 80px;
+    position: absolute;
+    left: 30px;
+    right: 0;
+}
+
+
+/** Fields */
+
+.input-field input,
+.input-field textarea {
+    background-image: linear-gradient(var(--amber), var(--amber)), linear-gradient(#d9d9d9, #d9d9d9) !important;
+    color: var(--amber) !important;
+}
+
+.input-field label {
+    color: var(--amber) !important;
+}

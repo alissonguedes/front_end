@@ -11,6 +11,28 @@
     list-style: none;
 }
 
+.collection {
+    border: none;
+}
+
+.collection-item {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-color: #000 !important;
+    color: var(--amber) !important
+}
+
+.collection-item .circle {
+    background: transparent !important;
+}
+
+.collection-item .materialboxed {
+    position: absolute;
+    display: inline-block;
+    overflow: hidden;
+    height: 100%;
+    vertical-align: middle;
+}
+
 html,
 body {
     margin: 0;
@@ -211,7 +233,6 @@ body {
 }
 
 .menu_left {
-    /* width: 380px; */
     width: 280px;
     height: 100%;
     float: left;
@@ -219,7 +240,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 99991;
+    z-index: 99990;
 }
 
 #main {
@@ -237,6 +258,7 @@ body {
     /* position: absolute !important; */
     /* overflow-x: hidden; */
     /* min-height: 100%; */
+    width: inherit;
 }
 
 .logo_tw_topo {
@@ -283,12 +305,12 @@ body {
     overflow: hidden;
     display: block;
     /* margin-left: 40px;
-    margin-top: 40px;
-    margin-right: 70px;
-    margin-bottom: 70px;
-    padding-bottom: 15px;
-    display: flex;
-    align-items: center; */
+margin-top: 40px;
+margin-right: 70px;
+margin-bottom: 70px;
+padding-bottom: 15px;
+display: flex;
+align-items: center; */
     border-bottom: solid 1px #ffc802;
     justify-content: space-between;
     position: fixed;
@@ -513,15 +535,15 @@ body {
 
 .bt_edit {
     /* width: 44px;
-    height: 44px;
-    overflow: hidden;
-    margin-right: 2px;
-    float: left;
-    background: url('../img/bt_edit.png') no-repeat left top;
-    transition: all .5s ease;
-    -moz-transition: all .5s ease;
-    -webkit-transition: all .5s ease;
-	cursor: pointer; */
+height: 44px;
+overflow: hidden;
+margin-right: 2px;
+float: left;
+background: url('../img/bt_edit.png') no-repeat left top;
+transition: all .5s ease;
+-moz-transition: all .5s ease;
+-webkit-transition: all .5s ease;
+cursor: pointer; */
     width: 44px;
     height: 44px;
     border-radius: 28px;
@@ -1071,9 +1093,9 @@ body {
     }
     .nome_arquivo {
         /* float: left;
-        margin-top: 9px;
-        color: #fff;
-		width: 150px; */
+margin-top: 9px;
+color: #fff;
+width: 150px; */
         left: 30px;
     }
     .copyright {
@@ -1419,6 +1441,15 @@ table.datatable .dropdown-trigger:hover i {
 
 .chips .chip {
     background-color: var(--amber);
+}
+
+.switch {
+    padding: 20px 0;
+}
+
+.switch label {
+    font-size: 1rem;
+    margin-right: 30px;
 }
 
 .input-field .error {
