@@ -2916,6 +2916,18 @@ label>checkbox {
     background-color: none !important;
 }
 
+.switch label input[type=checkbox]+.lever {
+    background-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.switch label input[type=checkbox]:checked+.lever {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.switch label input[type=checkbox].amber:checked+.lever:after {
+    background-color: var(--amber);
+}
+
 [type=checkbox].light-red:indeterminate+span:not(.lever):before,
 [type=checkbox].light-red:checked+span:not(.lever):before {
     border-right-color: #d0181e;
@@ -2992,6 +3004,12 @@ label>checkbox {
 [type=checkbox].light-yellow:checked+span:not(.lever):before {
     border-right-color: #fdd835;
     border-bottom-color: #fdd835;
+}
+
+[type=checkbox].amber:indeterminate+span:not(.lever):before,
+[type=checkbox].amber:checked+span:not(.lever):before {
+    border-right-color: var(--amber);
+    border-bottom-color: var(--amber);
 }
 
 [type=checkbox].light-amber:indeterminate+span:not(.lever):before,

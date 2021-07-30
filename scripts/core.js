@@ -27,6 +27,14 @@ function core() {
     Request.addEvent();
     Form.init();
 
+    $('[data-action]').on('click', function(e) {
+        var action = $(this).data('action');
+        if (action === 'back')
+            window.history.back();
+        else if (action === 'next')
+            window.history.forward();
+    });
+
     resizeble();
     DataTable();
     buttonActions();
@@ -42,7 +50,20 @@ function core() {
     }, 200);
 
     $('[data-tooltip]').tooltip();
-    $('.materialboxed').materialbox();
+
+    $('.materialboxed').each(function() {
+
+        var materialbox = $(this);
+        materialbox.materialbox({
+            // 'onOpenStart': function() {
+            //     materialbox.removeClass('circle');
+            // },
+            'onCloseEnd': function() {
+                materialbox.parents('.collection').css('overflow-y', 'inherit');
+            }
+        });
+
+    });
 
     $(window).on('resize', function() {
         resizeble();
@@ -172,12 +193,27 @@ function core() {
         $('.carousel').carousel('next');
     }, 3000)
 
-
     if ($('input[name="url"]#url').length) {
         var URL = window.location.href;
         if (URL.split('/').pop() !== 'login')
             document.getElementById('url').value = URL;
     }
+
+    /**
+     * Ação para remoção de lista de arquivos em uma página
+     */
+    $('.remover_arquivo').on('click', function(e) {
+
+        e.preventDefault();
+        var self = $(this);
+
+        Http.delete($(this).data('url'), function() {
+            var len = self.parents('ul').find('li').length;
+            self.parents('li#file_' + self.attr('id')).remove();
+            $('.count-files').html(len - 1);
+        });
+
+    });
 
     /**
      * Ação para verificação do Log de importação na página [/imports]
@@ -220,5 +256,9 @@ function core() {
         }
 
     })
+
+    requirejs([BASE_URL + '/../../assets/tacticweb/scripts/core.js'], () => {
+        init();
+    });
 
 }

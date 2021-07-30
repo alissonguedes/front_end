@@ -367,9 +367,9 @@ function DataTable(refresh) {
         },
         'scrollCollapse': true,
         'sPaginationType': 'materialize',
-        // 'scrollY': $(window).height() - 1 + "px",
-        // 'scrollCollapse': !1,
-        // 'scrollX': !1,
+        'scrollY': $(window).height() - 1 + "px",
+        'scrollCollapse': !1,
+        'scrollX': !1,
         'paging': !0,
         'responsive': true,
         'fnInitComplete': function() {
@@ -457,6 +457,7 @@ function DataTable(refresh) {
 
                 checkAll();
                 resizeBody();
+
             },
 
             'error': ($_) => {

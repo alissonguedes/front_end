@@ -4,6 +4,10 @@ var xhr;
 
 var Http = {
 
+    back: () => {
+
+    },
+
     goTo: (url, params) => {
 
         Http.get(url);
@@ -85,6 +89,17 @@ var Http = {
 
     },
 
+    delete: (url, callback) => {
+
+        Http.post(url, {
+            'method': 'delete'
+        }, (response) => {
+            Form.showMessage(response.message);
+            return callback();
+        });
+
+    },
+
     open: (type, url) => {
 
         if (window.XMLHttpRequest) {
@@ -98,7 +113,7 @@ var Http = {
 
         // movimenta a barra de rolagem para o topo da pÃ¡gina
         $('html,body').animate({
-            scrollBottom: 0
+            scrollTop: 0
         }, {
             duration: 200
         });
@@ -120,8 +135,6 @@ var Http = {
         }
 
         xhr.onloadend = function(e) {
-
-            // console.log(xhr);
 
             if (xhr.readyState === 4) {
                 Http.renderer(xhr.response, xhr.status);

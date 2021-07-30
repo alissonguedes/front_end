@@ -55,17 +55,7 @@ var Request = {
     // Alterado para expandir o menu a partir de qualquer link no sistema.
     menu: () => {
 
-        // var controller = typeof window.location.href.split(BASE_URL).splice(1)[0].split('/')[0] !== 'undefined' ? window.location.href.split(BASE_URL).splice(1)[0].split('/')[0] : null;
-
-        // var action = typeof window.location.href.split(BASE_URL).splice(1)[0].split('/')[1] !== 'undefined' ? window.location.href.split(BASE_URL).splice(1)[0].split('/')[1] : null;
-
-        // var url = BASE_URL + (controller !== null ? controller : '') + (action !== null ? '/' + action : '');
-
         $('#slide-out').removeClass('active').find('.active').removeClass('active');
-
-        // if ($('aside').hasClass('nav-expanded'))
-        //     $('#slide-out li').find('a[href="' + url + '"').addClass('active').parents().addClass('active').show();
-
 
         if ($('aside').hasClass('nav-expanded')) {
             var url = [];

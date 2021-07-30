@@ -406,7 +406,6 @@ function Materializecss() {
                     navCollapsible.removeClass("sideNav-lock").addClass("nav-collapsed"))
         });
 
-
     var searchListLi = $(".search-list li"),
         searchList = $(".search-list"),
         searchSm = $(".search-sm"),

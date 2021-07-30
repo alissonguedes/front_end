@@ -219,6 +219,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 99991;
 }
 
 #main {
@@ -1418,4 +1419,18 @@ table.datatable .dropdown-trigger:hover i {
 
 .chips .chip {
     background-color: var(--amber);
+}
+
+.input-field .error {
+    position: relative;
+    left: 0;
+    width: auto;
+    font-size: 15px !important;
+    color: #ff8400 !important;
+    font-weight: 400;
+    display: flex;
+    align-items: flex-start;
+    line-height: normal;
+    margin-top: 3px;
+    padding-left: 15px;
 }

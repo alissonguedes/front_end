@@ -91,7 +91,12 @@ var Form = {
                 Form.__button__(label, true);
 
                 $('.editor').each(function() {
-                    $(this).next(':input:hidden[name="' + $(this).attr('id') + '"]').val($(this).find('.ql-editor').html());
+
+                    var id = $(this).attr('id');
+                    var input = $(this).parent().find('input[name="' + id + '"]');
+
+                    console.log(input.next('[type=hidden]').val(input.val()));
+
                 })
 
             },
@@ -152,7 +157,6 @@ var Form = {
                     Form.__button__(label, false);
 
                 }
-
 
             },
 
@@ -360,30 +364,41 @@ var Form = {
             });
 
             // Alterar imagem ao selecionar uma no upload de arquivos
-            $(this).find('.image_alt').parents('.media').find(':input:file').on('change', function() {
+            $(this).find('.image_alt').each(function() {
 
-                var classes = $(this).parents('.image_alt').attr('class');
-                var self = $(this).attr('id');
+                $(this).parents('.media').find(':input:file').on('change', function() {
 
-                $(this).parents('.media').find('.original').hide();
-                $(this).parents('.media').find('.temp').parent().remove();
+                    var classes = $(this).parents('.image_alt').attr('class');
+                    var self = $(this).attr('id');
 
-                if ($(this).val()) {
+                    $(this).parents('.media').find('.original').hide();
+                    $(this).parents('.media').find('.temp').parent().remove();
 
-                    var src = window.URL.createObjectURL(document.querySelector('#' + self).files[0]);
-                    var img = $('<img/>', {
-                        'src': src,
-                        'class': 'materialboxed temp',
-                    });
+                    if ($(this).val()) {
 
-                    $(this).parents('.media').find('[data-placeholder]').html($(this).val());
+                        var file = document.querySelector('#' + self).files;
+                        var len = file.length;
 
-                    $(this).parents('.media').find('.image_view').append(img);
-                    $(this).parents('.media').find('.redefinir').show();
-                    $(this).parents('.media').find('.btn_add_new_image').hide();
-                    $(img).materialbox();
+                        for (var i = 0; i <= len; i++) {
 
-                }
+                            var src = window.URL.createObjectURL(file[i]);
+                            var img = $('<img/>', {
+                                'src': src,
+                                'class': 'materialboxed temp',
+                            });
+
+                            $(this).parents('.media').find('[data-placeholder]').html(file[i].name + (len > 1 ? ' +' + (len - 1) + ((len - 1) > 1 ? ' arquivos' : ' arquivo') : ''));
+
+                            $(this).parents('.media').find('.image_view').append(img);
+                            $(this).parents('.media').find('.redefinir').show();
+                            $(this).parents('.media').find('.btn_add_new_image').hide();
+                            $(img).materialbox();
+
+                        }
+
+                    }
+
+                });
 
             });
 
@@ -457,9 +472,24 @@ var Form = {
 
     showMessage: ($text, $status, $title = '') => {
 
+        $('#toast-container').children().animate({
+            marginLeft: '0.3in',
+            opacity: 0,
+        }, {
+            duration: 200,
+            complete: () => {
+                $('#toast-container').children().css('margin', 0);
+            }
+        });
+
         if (typeof $text !== 'object') {
 
             var classes = 'z-depth-2';
+
+            $('.toast-action').on('click', function(e) {
+                e.preventDefault();
+                M.Toast.dismissAll();
+            });
 
             setTimeout(function() {
 
@@ -468,12 +498,7 @@ var Form = {
                     html: $text + '<button class="btn btn-floating btn-small transparent toast-action waves-effect waves-light"><i class="material-icons">close</i></button>',
                     timeRemaining: _timeRemaining,
                     displayLength: _displayLength,
-                    panning: false
-                });
-
-                $('.toast-action').on('click', function(e) {
-                    e.preventDefault();
-                    M.Toast.dismissAll();
+                    panning: false,
                 });
 
             }, 200);

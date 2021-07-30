@@ -76,8 +76,6 @@ var Storage = {
         //     $return = false;
         // }
 
-        return $return;
-
     }
 
 }
