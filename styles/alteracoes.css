@@ -103,8 +103,8 @@ header {
 
 .menu1 {
     /* float: left;
-    width: 379px;
-    overflow: hidden; */
+width: 379px;
+overflow: hidden; */
 }
 
 .img_prod_int {
@@ -218,12 +218,12 @@ header {
 }
 
 
-/* 
+/*
 .shadow_slider {
-    display: block;
-    overflow: hidden;
-    width: 100%;
-    margin-top: -1px;
+display: block;
+overflow: hidden;
+width: 100%;
+margin-top: -1px;
 }
 */
 

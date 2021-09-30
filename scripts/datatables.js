@@ -42,17 +42,17 @@ $.extend($.fn.dataTableExt.oPagination, {
             };
 
             var $li = '<ul> \
-					<li class="prev disabled"> \
-						<a href="javascript:void(0);"> \
-							<i class="material-icons">keyboard_arrow_left</i> \
-						</a> \
-					</li> \
-					<li class="next disabled"> \
-						<a href="javascript:void(0);"> \
-							<i class="material-icons">keyboard_arrow_right</i> \
-						</a> \
-					</li> \
-				</ul>';
+<li class="prev disabled"> \
+<a href="javascript:void(0);"> \
+<i class="material-icons">keyboard_arrow_left</i> \
+</a> \
+</li> \
+<li class="next disabled"> \
+<a href="javascript:void(0);"> \
+<i class="material-icons">keyboard_arrow_right</i> \
+</a> \
+</li> \
+</ul>';
 
             $(nPaging).addClass('pagination').append($li);
             var els = $('a', nPaging);
@@ -101,13 +101,12 @@ $.extend($.fn.dataTableExt.oPagination, {
                 // Add the new list items and their event handlers
                 for (j = iStart; j <= iEnd; j++) {
                     sClass = (j == oPaging.iPage + 1) ? 'class="active"' : '';
-                    $('<li ' + sClass + '> \
-				<a href="javascript:void(0);">' + j + '</a> \
-				</li>').insertBefore($('li:last', an[i])[0]).bind('click', function(e) {
-                        e.preventDefault();
-                        oSettings._iDisplayStart = (parseInt($('a', this).text(), 10) - 1) * oPaging.iLength;
-                        fnDraw(oSettings);
-                    });
+                    $('<li ' + sClass + '><a href="javascript:void(0);">' + j + '</a></li>')
+                        .insertBefore($('li:last', an[i])[0]).bind('click', function(e) {
+                            e.preventDefault();
+                            oSettings._iDisplayStart = (parseInt($('a', this).text(), 10) - 1) * oPaging.iLength;
+                            fnDraw(oSettings);
+                        });
                 }
 
                 // Add / remove disabled classes from the static elements
@@ -140,7 +139,7 @@ var checkAll = () => {
     $('body').find('.dataTables_wrapper').each(function() {
 
         var status = 0;
-        var btn_status = $(this).parents('.panel').find(':button.update_resources, :button.update');
+        var btn_status = $(this).parents('.responsive-table').find(':button.update_resources, :button.update');
 
         var checked;
         var dataTables_wrapper = $(this);
@@ -153,6 +152,8 @@ var checkAll = () => {
         }
 
         dataTables_wrapper.find('thead').find(':input:checkbox').on('change', function() {
+
+            $(this).parents('.dataTables_wrapper').find('tbody').find('tr').removeClass('selected');
 
             if ($(this).prop('checked')) {
                 $(this).parents('.dataTables_wrapper').find('tbody').find(':checkbox').prop('checked',
@@ -183,9 +184,9 @@ var checkAll = () => {
             if (checkeds > 0) {
 
                 checked = true;
-                $(this).parents('.panel').find('.hide-buttons').css('display', 'flex')
-                    .find('button').attr('disabled', false).parents('.panel').find('.selecteds-label').html(selecteds_label);
-                $(this).parents('.panel').find('.show-buttons, .panel-header .input-field').hide();
+                $(this).parents('.responsive-table').find('.hide-buttons').css('display', 'block')
+                    .find('button').attr('disabled', false).parents('.action-btns').find('.selecteds-label').html(selecteds_label);
+                $(this).parents('.responsive-table').find('.show-buttons').hide();
 
                 if (checkeds === countCheckbox) {
                     indeterminateCheckbox.indeterminate = false;
@@ -197,9 +198,9 @@ var checkAll = () => {
 
             } else {
 
-                $(this).parents('.panel').find('.hide-buttons').hide()
-                    .find('button').attr('disabled', true).parents('.panel').find('.selecteds-label').empty();
-                $(this).parents('.panel').find('.show-buttons, .panel-header .input-field').css('display', 'flex');
+                $(this).parents('.responsive-table').find('.hide-buttons').hide()
+                    .find('button').attr('disabled', true).parents('.action-btns').find('.selecteds-label').empty();
+                $(this).parents('.responsive-table').find('.show-buttons').css('display', 'block');
                 indeterminateCheckbox.indeterminate = false;
                 checked = false;
 
@@ -207,6 +208,12 @@ var checkAll = () => {
 
             $(this).parents('.dataTables_wrapper').find('thead').find(':input:checkbox').prop(
                 'checked', checked);
+
+            $(this).parents('.dataTables_wrapper').find('tbody').find(':input:checkbox:checked').parents('tr').addClass('selected');
+
+            if (!$(this).is(':checked')) {
+                $(this).parents('tr').removeClass('selected');
+            }
 
         });
 
@@ -222,14 +229,14 @@ function deleteItem(item) {
 function buttonActions() {
 
     // Excluir dados em massa no datatables
-    $('body').find('.panel').find(':button.excluir').bind('click', function() {
+    $('body').find('.action-btns').find(':button.excluir').bind('click', function() {
 
         var self = $(this);
         var id = [];
         var type = null;
 
-        if (self.parents('.panel').find('.dataTables_wrapper').length > 0) {
-            self.parents('.panel').find('.dataTables_wrapper').find('tbody :checkbox:checked').each(function() {
+        if (self.parents('.responsive-table').find('.dataTables_wrapper').length > 0) {
+            self.parents('.responsive-table').find('.dataTables_wrapper').find('tbody :checkbox:checked').each(function() {
                 id.push($(this).val());
             });
         } else {
@@ -247,7 +254,10 @@ function buttonActions() {
         }, ($response) => {
 
             if ($response.type === 'back')
-                Http.goTo((typeof $response.url !== 'undefined' ? $response.url : $(this).data('link')), { 'message': $response.message, 'status': $response.status });
+                Http.goTo((typeof $response.url !== 'undefined' ? $response.url : $(this).data('link')), {
+                    'message': $response.message,
+                    'status': $response.status
+                });
             else {
 
                 if (typeof $response.message !== 'undefined')
@@ -264,15 +274,15 @@ function buttonActions() {
     var i = 0;
 
     // Altera recursos individualmente
-    $('body').find('.panel').find(':button.update_resources, :button.update').bind('click', function() {
+    $('body').find('.responsive-table').find(':button.update_resources, :button.update').bind('click', function() {
 
         var self = $(this);
         var id = [];
         var status = $(this).val();
         var method = typeof $(this).data('method') !== 'undefined' ? $(this).data('method') : 'patch';
 
-        if (self.parents('.panel').find('.dataTables_wrapper').length > 0) {
-            self.parents('.panel').find('.dataTables_wrapper').find('tbody :checkbox:checked').each(function() {
+        if (self.parents('.responsive-table').find('.dataTables_wrapper').length > 0) {
+            self.parents('.responsive-table').find('.dataTables_wrapper').find('tbody :checkbox:checked').each(function() {
                 id.push($(this).val());
             });
         } else {
@@ -293,7 +303,10 @@ function buttonActions() {
         }, ($response) => {
 
             if ($response.type === 'back')
-                Http.goTo($response.url, { 'message': $response.message, 'status': $response.status });
+                Http.goTo($response.url, {
+                    'message': $response.message,
+                    'status': $response.status
+                });
             else {
 
                 if (typeof $response.message !== 'undefined')
@@ -309,7 +322,7 @@ function buttonActions() {
 
 
     // Ação para botão de tradução
-    $('body').find('.panel').find(':button.translator').bind('click', function() {
+    $('body').find('.responsive-table').find(':button.translator').bind('click', function() {
 
         var self = $(this);
         var id = [];
@@ -317,8 +330,8 @@ function buttonActions() {
         var status = $(this).val();
         var url = $(this).data('link');
 
-        if (self.parents('.panel').find('.dataTables_wrapper').length > 0) {
-            self.parents('.panel').find('.dataTables_wrapper').find('tbody :checkbox:checked').each(function() {
+        if (self.parents('.responsive-table').find('.dataTables_wrapper').length > 0) {
+            self.parents('.responsive-table').find('.dataTables_wrapper').find('tbody :checkbox:checked').each(function() {
                 id.push($(this).val());
             });
         } else {
@@ -333,7 +346,7 @@ function buttonActions() {
 
 function DataTable(refresh) {
 
-    var table = $('table.datatable');
+    var table = $('table.dataTable');
 
     var _self = table.DataTable({
         'retrieve': true,
@@ -348,10 +361,8 @@ function DataTable(refresh) {
             'sLengthMenu': '_MENU_',
             'sLengthMenu': '',
             'sLoadingRecords': 'Carregando...',
-            'sProcessing': '<div class="progress">\
-    				<div class="indeterminate"></div>\
-    			</div>',
-            'sZeroRecords': 'Nenhum registro encontrado',
+            'sProcessing': '<div class="progress"><div class="indeterminate"></div></div>',
+            'sZeroRecords': '',
             'sSearch': (typeof table.data('label') !== 'undefined' && table.data('label') ? table.data('label') : ''),
             'sSearchPlaceholder': (typeof table.data('placeholder') !== 'undefined' && table.data('placeholder') ? table.data('placeholder') : null),
             'oPaginate': {
@@ -367,9 +378,9 @@ function DataTable(refresh) {
         },
         'scrollCollapse': true,
         'sPaginationType': 'materialize',
-        'scrollY': $(window).height() - 1 + "px",
-        'scrollCollapse': !1,
-        'scrollX': !1,
+        // 'scrollY': $(window).height() - 1 + "px",
+        // 'scrollCollapse': !1,
+        // 'scrollX': !1,
         'paging': !0,
         'responsive': true,
         'fnInitComplete': function() {
@@ -457,6 +468,7 @@ function DataTable(refresh) {
 
                 checkAll();
                 resizeBody();
+                table.parents('.dataTables_wrapper').find('[data-tooltip]').tooltip();
 
             },
 
@@ -479,6 +491,14 @@ function DataTable(refresh) {
             _self.search(this.value).draw();
         }));
 
+        search.bind('blur', function() {
+            if (search.val().length > 0) {
+                search.parents('.header-search-wrapper').addClass('active');
+            } else {
+                search.parents('.header-search-wrapper').removeClass('active');
+            }
+        })
+
         if (search.val() != '') {
             _self.search(search.val()).draw();
         }
@@ -493,13 +513,20 @@ function DataTable(refresh) {
 
 
 function delay(callback, ms) {
+
     var timer = 0;
+
     return function() {
+
         var context = this,
             args = arguments;
+
         clearTimeout(timer);
+
         timer = setTimeout(function() {
             callback.apply(context, args);
         }, ms || 250);
+
     }
+
 }

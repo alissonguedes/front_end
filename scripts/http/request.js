@@ -6,6 +6,12 @@ var Request = {
 
     addEvent: (link) => {
 
+        $("[data-action]").on("click", function(e) {
+            var action = $(this).data("action");
+            if (action === "back") window.history.back();
+            else if (action === "next") window.history.forward();
+        });
+
         var ln = typeof link === 'undefined' ? links : link;
 
         $('body').find(ln).on('click', function(e) {
@@ -23,13 +29,14 @@ var Request = {
 
             } else {
 
-                if (target && target != '_self') {
-                    window.open(link, target);
-                } else
-                if (target && target == '_self') {
-                    window.location.href = link;
+                if (target) {
+                    if (target == '_self')
+                        window.location.href = link;
+                    else if (target == '_top')
+                        return null;
+                    else
+                        window.open(link, target);
                 }
-
             }
 
         });

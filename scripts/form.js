@@ -55,8 +55,8 @@ var Form = {
 
         _element.find('[type=reset]').click();
         _element.find('.ql-container').find('.ql-editor').empty().parents('.ql-container').parent().find('[type=hidden]').val('');
-        _element.find('.media').find('.redefinir').click().hide();
-        _element.find('.media').find('.btn_add_new_image').show();
+        _element.find('.files').find('.redefinir').click().hide();
+        _element.find('.files').find('.btn_add_new_image').show();
         _element.find('[autofocus]').focus();
 
         // Form.image_upload();
@@ -151,7 +151,9 @@ var Form = {
                         }
 
                     } else {
-                        M.toast({ html: error });
+                        M.toast({
+                            html: error
+                        });
                     }
 
                     Form.__button__(label, false);
@@ -188,8 +190,8 @@ var Form = {
 
         if (response.status === 200) {
 
-            var $titulo_inicial = $('#boas-vindas').text();
-            var $titulo = 'Olá, ' + response.data.user + '! Seja bem-vindo!'
+            var $titulo_inicial = $('#boas-vindas').find('h5').text();
+            var $titulo = 'Olá, ' + response.data.user + ', seja bem-vindo!'
 
             Form.__avancar__($titulo);
 
@@ -242,13 +244,13 @@ var Form = {
 
         if (type.type === 'back') {
 
-            Form.reset();
+            // Form.reset();
             Http.goTo(type.url)
 
         }
 
-        _element.find('.media').find('.redefinir').hide();
-        _element.find('.media').find('.btn_add_new_image').show();
+        _element.find('.files').find('.redefinir').hide();
+        _element.find('.files').find('.btn_add_new_image').show();
 
     },
 
@@ -331,7 +333,7 @@ var Form = {
 
     image_upload: () => {
 
-        $(_element).find('.media').each(function() {
+        $(_element).find('.files').each(function() {
 
             var placeholder = '';
             var img;
@@ -345,20 +347,20 @@ var Form = {
             // Exibir a imagem em uploads de imagens
             $(this).find('.image_alt').on('click', function(e) {
 
-                img = $(this).parents('.media').find('img');
+                img = $(this).parents('.files').find('img');
 
-                $(this).parents('.media').find(':input:file').click();
+                $(this).parents('.files').find(':input:file').click();
 
             });
 
             // Redefinir foto do perfil de usuário
             $(this).find('.redefinir').on('click', function() {
 
-                $(this).parents('.media').find('.original').show();
-                $(this).parents('.media').find('.temp').parent().remove();
-                $(this).parents('.media').find('.redefinir').hide();
-                $(this).parents('.media').find('.btn_add_new_image').show();
-                $(this).parents('.media').find('[data-placeholder]').html(placeholder.data('placeholder'));
+                $(this).parents('.files').find('.original').show();
+                $(this).parents('.files').find('.temp').parent().remove();
+                $(this).parents('.files').find('.redefinir').hide();
+                $(this).parents('.files').find('.btn_add_new_image').show();
+                $(this).parents('.files').find('[data-placeholder]').html(placeholder.data('placeholder'));
                 $('.image_view').parents().find(':input:file').val('');
 
             });
@@ -366,13 +368,13 @@ var Form = {
             // Alterar imagem ao selecionar uma no upload de arquivos
             $(this).find('.image_alt').each(function() {
 
-                $(this).parents('.media').find(':input:file').on('change', function() {
+                $(this).parents('.files').find(':input:file').on('change', function() {
 
                     var classes = $(this).parents('.image_alt').attr('class');
                     var self = $(this).attr('id');
 
-                    $(this).parents('.media').find('.original').hide();
-                    $(this).parents('.media').find('.temp').parent().remove();
+                    $(this).parents('.files').find('.original').hide();
+                    $(this).parents('.files').find('.temp').parent().remove();
 
                     if ($(this).val()) {
 
@@ -387,11 +389,11 @@ var Form = {
                                 'class': 'materialboxed temp',
                             });
 
-                            $(this).parents('.media').find('[data-placeholder]').html(file[i].name + (len > 1 ? ' +' + (len - 1) + ((len - 1) > 1 ? ' arquivos' : ' arquivo') : ''));
+                            $(this).parents('.files').find('[data-placeholder]').html(file[i].name + (len > 1 ? ' +' + (len - 1) + ((len - 1) > 1 ? ' arquivos' : ' arquivo') : ''));
 
-                            $(this).parents('.media').find('.image_view').append(img);
-                            $(this).parents('.media').find('.redefinir').show();
-                            $(this).parents('.media').find('.btn_add_new_image').hide();
+                            $(this).parents('.files').find('.image_view').append(img);
+                            $(this).parents('.files').find('.redefinir').show();
+                            $(this).parents('.files').find('.btn_add_new_image').hide();
                             $(img).materialbox();
 
                         }
@@ -461,7 +463,11 @@ var Form = {
 
                         break;
                     case 'select-multiple':
-                        for (j = form._elements[i].options.length - 1; j >= 0; j = j - 1) { if (form._elements[i].options[j].selected) { q.push(form._elements[i].name + '=' + encodeURIComponent(form._elements[i].options[j].value)) } }
+                        for (j = form._elements[i].options.length - 1; j >= 0; j = j - 1) {
+                            if (form._elements[i].options[j].selected) {
+                                q.push(form._elements[i].name + '=' + encodeURIComponent(form._elements[i].options[j].value))
+                            }
+                        }
                         break
                 }
                 break;
@@ -529,8 +535,12 @@ var Form = {
             Object.keys($field).forEach((item) => {
 
                 var label = $('[name="' + item + '"]');
-                var div = $('<div/>', { 'class': 'error' });
-                var icon = $('<i/>', { class: 'material-icons sufix' }).html('error');
+                var div = $('<div/>', {
+                    'class': 'error'
+                });
+                var icon = $('<i/>', {
+                    class: 'material-icons sufix'
+                }).html('error');
 
                 $(label).parents('.input-field').addClass('error')
                     .find('.error').remove();
@@ -582,28 +592,75 @@ var Form = {
 
     __avancar__: ($titulo) => {
 
-        $('#boas-vindas').html($titulo);
+        $('#boas-vindas')
+            .removeClass('animated faster fadeOutLeft fadeInLeft fadeInRight fadeOutRight')
+            .find('h5')
+            .html($titulo);
 
-        $('#input-login').removeClass('animated faster fadeOutLeft fadeInLeft fadeInRight fadeOutRight').addClass('animated faster fadeOutLeft')
-            .find('[name="login"]').attr('disabled', true);
-        $('#input-pass').removeClass('animated faster fadeOutLeft fadeInLeft fadeInRight fadeOutRight').addClass('animated faster fadeInRight').show()
-            .find('[name="senha"]').attr('disabled', false);
-        $('#relembrar_login').hide();
-        $('#btn-back,#relembrar_senha').css('display', 'flex').attr('disabled', false);
+        $('#boas-vindas')
+            .addClass('animated faster fadeOutLeft')
+            .removeClass('animated faster fadeOutLeft')
+            .addClass('animated faster fadeInLeft')
+
+        $('#input-login')
+            .removeClass('animated faster fadeOutLeft fadeInLeft fadeInRight fadeOutRight')
+            .addClass('animated faster fadeOutLeft')
+            .find('[name="login"]')
+            .attr('disabled', true);
+
+        $('#input-pass')
+            .removeClass('animated fast fadeOutLeft fadeInLeft fadeInRight fadeOutRight')
+            .addClass('animated faster fadeInRight')
+            .show()
+            .find('[name="senha"]')
+            .attr('disabled', false);
+
+        $('#relembrar_login')
+            .hide();
+
+        $('#btn-back,#relembrar_senha')
+            .css('display', 'flex')
+            .attr('disabled', false);
 
     },
 
     __voltar__: ($titulo) => {
 
         $('#btn-back').on('click', function() {
-            $('#boas-vindas').html($titulo);
-            $('#input-pass').removeClass('animated faster fadeOutLeft fadeInLeft fadeInRight fadeOutRight').addClass('animated faster fadeOutRight')
-                .find('[name="senha"]').val('').attr('disabled', true);
-            $('#btn-back,#relembrar_senha').css('display', 'flex').attr('disabled', true).hide();
-            $('#input-login').removeClass('animated faster fadeOutLeft fadeInLeft fadeInRight fadeOutRight').addClass('animated faster fadeInLeft').show()
-                .find('[name="login"]').attr('disabled', false);
+
+            $('#boas-vindas')
+                .removeClass('animated faster fadeOutLeft fadeInLeft fadeInRight fadeOutRight')
+                .find('h5')
+                .html($titulo);
+
+            $('#boas-vindas')
+                .addClass('animated faster fadeOutRight')
+                .removeClass('animated faster fadeOutRight')
+                .addClass('animated faster fadeInRight')
+
+            $('#input-pass')
+                .removeClass('animated faster fadeOutLeft fadeInLeft fadeInRight fadeOutRight')
+                .addClass('animated faster fadeOutRight')
+                .find('[name="senha"]')
+                .val('')
+                .attr('disabled', true);
+
+            $('#btn-back,#relembrar_senha')
+                .css('display', 'flex')
+                .attr('disabled', true)
+                .hide();
+
+            $('#input-login')
+                .removeClass('animated faster fadeOutLeft fadeInLeft fadeInRight fadeOutRight')
+                .addClass('animated faster fadeInLeft')
+                .show()
+                .find('[name="login"]')
+                .attr('disabled', false);
+
             $('#relembrar_login').show();
+
             document.getElementById('login').focus();
+
         })
 
     },
