@@ -1,0 +1,679 @@
+body {
+    font-family: 'Barlow', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #646c71;
+    text-transform: none;
+    font-weight: 400;
+    font-style: normal;
+    background-color: transparent;
+}
+
+[class^="icon-"] {
+    font-size: 18px;
+}
+
+.container {
+    width: 90%;
+    border: 1px dashed #ccc;
+    padding: 0;
+}
+
+#main {
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #0c121d;
+    font-family: 'Barlow Condensed', sans-serif;
+}
+
+h2 {
+    font-size: 30px;
+    line-height: 40px;
+    letter-spacing: 0.5px;
+    color: #0c121d;
+    text-transform: none;
+    font-weight: 700;
+    font-style: normal;
+}
+
+p {
+    font-family: 'Barlow', sans-serif;
+}
+
+
+/** Header **/
+
+header {
+    position: relative;
+    min-height: 170px;
+    z-index: 99999;
+}
+
+
+/** Navbar **/
+
+.navbar .nav-wrapper {
+    padding: 0 50px;
+}
+
+.navbar {
+    position: relative;
+    z-index: 997;
+    border-bottom: 1px solid;
+}
+
+.navbar,
+.navbar ul li {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.navbar .navbar-main {
+    height: 50px;
+    line-height: 50px;
+    padding: 0;
+}
+
+.navbar-main {
+    border-bottom: 1px solid;
+    border-color: inherit;
+    overflow: hidden;
+}
+
+.navbar .navbar-main .nav-wrapper {
+    display: flex;
+    place-content: space-between;
+}
+
+.navbar .navbar-main ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    height: inherit;
+    line-height: inherit;
+    color: #fff;
+}
+
+.navbar .navbar-main ul li {
+    height: inherit;
+    line-height: inherit;
+    align-items: center;
+    border-left: 1px solid;
+    place-content: center;
+    text-align: center;
+    font-size: 13px;
+}
+
+.navbar .navbar-main ul.contact li,
+.navbar .navbar-main ul.social li a {
+    padding: 0 10px;
+}
+
+.navbar .navbar-main ul.contact [class^="icon-"] {
+    color: var(--red);
+    padding: 0;
+    margin: 0;
+    line-height: normal;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.navbar .navbar-main ul.social li a {
+    height: inherit;
+    line-height: inherit;
+    color: inherit;
+}
+
+.navbar .navbar-main ul.social li a i {
+    position: relative;
+    font-size: 18px;
+}
+
+.navbar .navbar-main ul li:last-child {
+    border-right: 1px solid;
+}
+
+.navbar .navbar-main ul.contact li .material-icons {
+    margin-right: 10px;
+}
+
+
+/** Barra de Menus **/
+
+nav.nav-extended .nav-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+
+/** Logo **/
+
+.logo-wrapper {
+    margin: 0;
+    padding: 0;
+    margin-right: 80px;
+}
+
+.brand-logo {
+    padding: 0;
+    margin: 0;
+    height: inherit;
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    display: flex;
+}
+
+.brand-logo img {
+    max-height: 85px;
+}
+
+
+/** Menus **/
+
+.navbar nav {
+    background: transparent;
+    box-shadow: none;
+    height: 120px;
+    line-height: 120px;
+}
+
+.navbar nav ul {
+    border: none;
+}
+
+.navbar nav ul,
+.navbar nav ul li {
+    height: inherit;
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    float: left;
+    position: relative;
+}
+
+.navbar nav ul li a {
+    color: #fff;
+    height: inherit;
+    line-height: inherit;
+    transition: all 500ms;
+    background: none !important;
+}
+
+.navbar nav ul>li:hover>a {
+    color: var(--red);
+}
+
+.navbar nav ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    border-top: 3px solid var(--red);
+    z-index: 992;
+}
+
+.navbar nav ul li:hover>ul {
+    display: block;
+}
+
+.navbar nav ul ul li {
+    display: block;
+    width: 270px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+    padding: 0;
+    margin: 0;
+    height: auto;
+    line-height: normal;
+    background: #fff;
+    transition: all 200ms ease-in-out;
+}
+
+.navbar nav ul ul li:hover {
+    padding-left: 10px;
+    background: var(--red) !important;
+}
+
+.navbar nav ul ul li a {
+    color: #000;
+    font-size: 14px;
+    text-transform: none;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+}
+
+.navbar nav ul ul li:hover a {
+    color: #fff;
+}
+
+.navbar nav ul>li>ul>li>a:before {
+    position: absolute;
+    content: '';
+    left: 18px;
+    width: 0px;
+    height: 2px;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    -webkit-transition: all .500s ease-in-out;
+    transition: all .500s ease-in-out;
+}
+
+.navbar nav ul>li>ul>li:hover>a:before {
+    background-color: rgba(255, 255, 255, 0.50);
+    width: 10px;
+}
+
+
+/** Whastapp Phone **/
+
+.navbar nav .whatsapp {
+    display: flex;
+    line-height: inherit;
+    height: inherit;
+    align-items: center;
+}
+
+.navbar nav .whatsapp a {
+    width: 115px;
+    line-height: 1;
+    font-size: 18px;
+}
+
+.navbar nav .whatsapp a::before {
+    position: absolute;
+    font-family: 'icons';
+    font-size: 50px;
+    content: '\e83f';
+    left: -10px;
+    color: var(--red);
+    -moz-transform: scale(-1, 1);
+    -webkit-transform: scale(-1, 1);
+    -o-transform: scale(-1, 1);
+    -ms-transform: scale(-1, 1);
+    transform: scale(-1, 1);
+}
+
+.navbar nav .whatsapp a .contact-title,
+.navbar nav .whatsapp a .contact-phone {
+    display: block;
+}
+
+.navbar nav .whatsapp a .contact-title {
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.navbar nav .whatsapp a .contact-phone {}
+
+
+/** Content **/
+
+#slider {
+    height: calc(100vh - 171px);
+}
+
+#main .content-wrapper-before {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 500px;
+    transition: 3ms ease all;
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.content-wrapper-before>.container {
+    background: pink;
+    height: calc(100vh - 60px);
+}
+
+h2.title,
+h4.subtitle {
+    font-family: Barlow Condensed, sans-serif;
+}
+
+h2.title {
+    font-size: 40px;
+    line-height: 50px;
+    letter-spacing: 0.5px;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-style: normal;
+    margin: 0;
+    margin-left: -5px;
+}
+
+h4.subtitle {
+    font-size: 14px;
+    line-height: 23px;
+    letter-spacing: 2px;
+    color: #acafb2;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-style: normal;
+    position: relative;
+    padding-bottom: 15px;
+    display: inline-block;
+    margin: 0;
+}
+
+h4.subtitle:before {
+    background-color: var(--red-lighten-2);
+    content: '';
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    bottom: 6px;
+    left: 0;
+}
+
+h4.subtitle:after {
+    background-color: var(--red-lighten-2);
+    content: '';
+    width: 40px;
+    height: 3px;
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+}
+
+p.description {
+    margin: 0 0 25px;
+}
+
+.card {
+    box-shadow: none;
+    border: 1px solid #e8e8e8;
+    border-radius: 0;
+}
+
+.card .card-content {
+    /* padding: 0 10px 0 0; */
+    padding: 30px;
+    position: relative;
+}
+
+.card .card-content .card-number {
+    font-family: Barlow Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 70px;
+    line-height: 70px;
+    color: var(--red);
+}
+
+.card .card-content .card-title {
+    padding-top: 30px;
+}
+
+.card .card-content .card-title .title {
+    font-size: 22px;
+    line-height: 32px;
+    font-weight: 700;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #e8e8e8;
+    display: block;
+    font-family: Barlow Condensed, sans-serif;
+    color: #0c121d;
+}
+
+.card .card-content .card-title .subtitle {
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #646c71;
+    text-transform: uppercase;
+    margin-bottom: 0;
+    letter-spacing: 1.5px;
+    display: block;
+    font-family: Barlow, sans-serif;
+}
+
+.card .card-content p {
+    margin-top: 15px;
+}
+
+.card .card-icon {
+    background-color: var(--red);
+    display: inline-block;
+    height: 70px;
+    width: 70px;
+    line-height: 70px;
+    font-size: 40px;
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    margin-top: -75px;
+    z-index: 1;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    -webkit-transition: all .25s ease-in-out;
+    transition: all .25s ease-in-out;
+    border-radius: 25%
+}
+
+.card .card-icon img {
+    position: inherit;
+    top: 0;
+    left: 0;
+    width: inherit;
+}
+
+
+/* Quem-somos */
+
+#quem-somos {
+    position: relative;
+    overflow: hidden;
+}
+
+#quem-somos .container {
+    position: relative;
+    z-index: 1;
+}
+
+#quem-somos .contact {
+    /* display: flex; */
+    /* align-items: center; */
+    /* text-align: center; */
+    width: 30%;
+    bottom: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-transform: uppercase;
+    background-image: url('http://localhost/grupo_alerta/alertaweb/public_html/wp-content/uploads/sites/3/2020/05/dsvy-image-2-1.png');
+    border-radius: 0px;
+    background-color: rgb(225, 0, 0);
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-right: -90.5px;
+}
+
+#quem-somos .contact .container {
+    color: #fff;
+    padding-top: 200px;
+    padding-left: -25px;
+    width: 100%;
+    height: inherit;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    place-content: center;
+}
+
+#quem-somos .contact .title {
+    color: #FFFFFF;
+    font-family: 'Barlow Condensed', Sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 38px;
+}
+
+#quem-somos .contact .subtitle {
+    color: #FFFFFF;
+    font-family: 'Barlow Condensed', Sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+}
+
+#quem-somos .contact a {
+    color: #0c121d;
+    font-size: 21px
+}
+
+
+/** Serviços **/
+
+#servicos .card .card-title {
+    margin-top: 10px;
+    margin: 0;
+    line-height: 1;
+}
+
+#servicos .card .card-title .title {
+    color: #fff;
+    text-align: center;
+    line-height: 1;
+    border: none;
+    margin: 0;
+}
+
+#servicos .card .card-content p {
+    margin: 0;
+    line-height: 2;
+    text-align: center;
+    font-size: 21.5px;
+    color: #fff;
+}
+
+
+/** Seção Seguranca **/
+
+#seguranca-profissional {
+    position: relative;
+}
+
+#seguranca-profissional:before,
+#seguranca-profissional:after {
+    height: inherit;
+    width: 50%;
+    position: absolute;
+    content: '';
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+#seguranca-profissional:before {
+    background: #fff;
+    left: 0;
+}
+
+#seguranca-profissional:after {
+    background: #f5f5f5 !important;
+    right: 0;
+}
+
+#seguranca-profissional .card {
+    position: relative;
+    height: 494px;
+}
+
+#seguranca-profissional .card.horizontal .card-title {
+    position: relative;
+    overflow: hidden;
+    background-color: #e10000 !important;
+    padding: 20px;
+    width: 113px;
+    height: inherit;
+    text-align: left;
+    margin-right: 10px;
+}
+
+#seguranca-profissional .card.horizontal .card-title:before {
+    background-image: url('../../uploads/2020/05/dsvy-pattern-bg-1.png');
+    background-position: top;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#seguranca-profissional .card.horizontal .card-title .title {
+    writing-mode: vertical-rl;
+    /* direction: ltr; */
+    /* unicode-bidi: bidi-override; */
+    transform: rotate(-180deg);
+    display: block;
+    position: relative;
+    z-index: 999;
+    float: none;
+    text-align: left;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-family: "Barlow Condensed", Sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30px;
+    letter-spacing: 1.3px;
+}
+
+#seguranca-profissional .card.horizontal .card-title .title u {
+    color: #000;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+#seguranca-profissional .card .card-image img {
+    height: 100%;
+}
+
+#seguranca-profissional .card-icon {
+    position: absolute;
+    top: 50%;
+    right: -39px;
+    margin-top: -30px;
+    margin-left: 10px;
+    border-radius: 50%;
+    box-shadow: 0 0px 0px 8px rgb(0 0 0 / 10%);
+}
+
+#seguranca-profissional .card-stacked .card-content {
+    padding-left: 100px;
+}

@@ -1,0 +1,155 @@
+/** Buttons **/
+.btn {
+	background-color: var(--red);
+	color: inherit;
+	text-align: center;
+	text-transform: uppercase;
+	display: inline-block;
+}
+
+/** Borders **/
+.bg-border {
+	border-width: 1px;
+	border-style: solid;
+	border-color: inherit;
+	border-radius: inherit;
+}
+
+/** Borders Styles **/
+
+.bg-border.solid {
+	border-style: solid !important;
+}
+
+.bg-border.dotted {
+	border-style: dotted !important;
+}
+
+.bg-border.dashed {
+	border-style: dashed !important;
+}
+
+/** Border Widths **/
+.no-border {
+	border: none !important;
+}
+
+.bg-border.border-1 {
+	border-width: 1px !important;
+	line-height: 52px;
+}
+
+.bg-border.border-2 {
+	border-width: 2px !important;
+	line-height: 50px;
+}
+
+.bg-border.border-3 {
+	border-width: 3px !important;
+	line-height: 49px;
+}
+
+.bg-border.border-4 {
+	border-width: 4px !important;
+	line-height: 47px;
+}
+
+.bg-border.border-5 {
+	border-width: 5px !important;
+	line-height: 45px;
+}
+
+.bg-border.border-6 {
+	border-width: 6px !important;
+	line-height: 43px;
+}
+
+.bg-border.border-7 {
+	border-width: 7px !important;
+	line-height: 41px;
+}
+
+.bg-border.border-8 {
+	border-width: 8px !important;
+	line-height: 39px;
+}
+
+.bg-border.border-9 {
+	border-width: 9px !important;
+	line-height: 37px;
+}
+
+.bg-border.border-10 {
+	border-width: 10px !important;
+	line-height: 35px;
+}
+
+/** Border Colors **/
+.border-black {
+	border-color: #000 !important;
+}
+
+.border-white {
+	border-color: #fff !important;
+}
+
+.border-red {
+	border-color: var(--red) !important;
+}
+
+.border-blue {
+	border-color: var(--blue) !important;
+}
+
+.border-grey {
+	border-color: var(--grey) !important;
+}
+
+.border-grey-darken-4 {
+	border-color: var(--grey-darken-4) !important;
+}
+
+/** Borders Radius **/
+.b-radius-0 {
+	border-radius: 0px !important;
+}
+
+.b-radius-1 {
+	border-radius: 1px !important;
+}
+
+.b-radius-2 {
+	border-radius: 2px !important;
+}
+
+.b-radius-3 {
+	border-radius: 3px !important;
+}
+
+.b-radius-4 {
+	border-radius: 4px !important;
+}
+
+.b-radius-5 {
+	border-radius: 5px !important;
+}
+
+.b-radius-6 {
+	border-radius: 6px !important;
+}
+
+.b-radius-7 {
+	border-radius: 7px !important;
+}
+
+.b-radius-8 {
+	border-radius: 8px !important;
+}
+
+.b-radius-9 {
+	border-radius: 9px !important;
+}
+
+.b-radius-10 {
+	border-radius: 10px !important;
+}
